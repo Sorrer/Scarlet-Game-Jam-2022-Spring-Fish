@@ -1,18 +1,64 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Game.Systems.Inventory
 {
-
-    public interface InventoryItem
+    public enum ItemCategories
     {
-        public string GetID();
+        Buildings, Food, Craftable
     }
+    
     
     [CreateAssetMenu(fileName = "Inventory", menuName = "Game/Inventory")]
     public class InventorySO : ScriptableObject
     {
-        //Stores all items
-        //Game will have infinite amount if items, but each item will store up to a certain amount
+        //Only one of each item
+        private HashSet<InventoryItem> items = new HashSet<InventoryItem>();
+    
+    
+        public List<InventoryItem> GetAllitems()
+        {
+            return items.ToList();
+        }
         
+        public List<InventoryItem> GetAllitems(ItemCategories category)
+        {
+            List<InventoryItem> sortedItems = new List<InventoryItem>();
+
+            foreach (var i in items)
+            {
+                if (i.Category == category)
+                {
+                    sortedItems.Add(i);
+                }
+            }
+
+            return sortedItems;
+        }
+        
+
+        public void AddItem(InventoryItem item)
+        {
+            if (items.Contains(item))
+            {
+                Debug.LogError("Item already exists, can not add. Check first");
+                return;
+            }
+            
+            items.Add(item);
+        }
+
+        public void RemoveItem(InventoryItem item)
+        {
+            items.Remove(item);
+        }
+        
+        
+
+        public bool HasItem(InventoryItem item)
+        {
+            return items.Contains(item);
+        }
     }
 }

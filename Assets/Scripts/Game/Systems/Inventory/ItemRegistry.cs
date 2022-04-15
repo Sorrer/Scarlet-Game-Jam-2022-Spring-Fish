@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Game.Systems.Inventory
 {
+    [Obsolete("Not used anymore")]
     public class ItemRegistry : ScriptableObject
     {
         [Serializable]
