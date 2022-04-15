@@ -118,7 +118,7 @@ namespace Game.Systems.Player
         {
             var settings = state.settings.interactionSettings;
             
-            this.enabled = settings.EnableInteractions;
+            cursorInteractor.enabled = settings.EnableInteractions;
 
             if (lastState != null)
             {
@@ -175,5 +175,6 @@ namespace Game.Systems.Player
                 
             }
         }
+
     }
 }

@@ -99,5 +99,17 @@ namespace Game.Systems.CursorInteractable
             }
             enabled = false;
         }
+        
+        
+        private void OnDisable()
+        {
+            if (lastInteractable != null)
+            {
+                Debug.Log("Cleared cursor interactor, disabled");
+                lastInteractable.OnDeselect();
+                OnDeselectEvent?.Invoke(lastInteractable);
+                lastInteractable = null;
+            }
+        }
     }
 }
