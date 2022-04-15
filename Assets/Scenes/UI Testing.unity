@@ -348,6 +348,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1570547821417556093, guid: 2da19eeac59300e47a6a9735240e996b, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374678189178743975, guid: 2da19eeac59300e47a6a9735240e996b, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: FlipLeft
@@ -363,6 +367,10 @@ PrefabInstance:
     - target: {fileID: 2899114091954692227, guid: 2da19eeac59300e47a6a9735240e996b, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027250536591836287, guid: 2da19eeac59300e47a6a9735240e996b, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3256969955381200335, guid: 2da19eeac59300e47a6a9735240e996b, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -468,6 +476,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4949657183884993024, guid: 2da19eeac59300e47a6a9735240e996b, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5122481029608262401, guid: 2da19eeac59300e47a6a9735240e996b, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -488,6 +500,10 @@ PrefabInstance:
       propertyPath: pageContentList.Array.data[4]
       value: 
       objectReference: {fileID: 6687904837486846586, guid: 90fbeb3b87ba7734a9d70ebd23fe32ad, type: 3}
+    - target: {fileID: 7542988393153780922, guid: 2da19eeac59300e47a6a9735240e996b, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8336596382952694167, guid: 2da19eeac59300e47a6a9735240e996b, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
