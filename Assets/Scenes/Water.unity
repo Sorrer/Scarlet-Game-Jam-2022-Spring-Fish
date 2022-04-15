@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 68f14da3462938c448fa4593f0672bd5, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 8fcb9a068d57bcf4dab7a2bfd2df599c, type: 2}
   m_HaloStrength: 0.464
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.08850832, g: 0.042394187, b: 0.03574152, a: 1}
+  m_IndirectSpecularColor: {r: 0.18160486, g: 0.4181142, b: 0.7927828, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4052,6 +4052,14 @@ MonoBehaviour:
     ProceduralNextState: 0
     interactionSettings: {fileID: 11400000, guid: cf071be72e1bec4438ce5fdf1d6c971e, type: 2}
     AllowInventoryOpen: 0
+  BlinkCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  BlinkTime: 0
+  profile: {fileID: 0}
 --- !u!1001 &431086411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15736,7 +15744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 55462639630eef942a8170b2a45becf0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.83854
+      value: 9.126
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 55462639630eef942a8170b2a45becf0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18810,7 +18818,7 @@ MonoBehaviour:
   ActiveState: 0
   settings:
     StateID: 8
-    NextState: 0
+    NextState: 3
     UseProceduralNextState: 0
     ProceduralNextState: 0
     interactionSettings: {fileID: 11400000, guid: 162c27ff489c9ef4aa9b86d3d2ebec8a, type: 2}

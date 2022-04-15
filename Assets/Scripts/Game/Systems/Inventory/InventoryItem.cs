@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Game.Systems.Inventory
 {
+    [Serializable]
+    [CreateAssetMenu(fileName = "Item", menuName = "Game/Item")]
     public class InventoryItem : ScriptableObject
     {
         public Texture2D Icon;
