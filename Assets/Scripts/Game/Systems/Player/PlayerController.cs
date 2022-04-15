@@ -24,7 +24,11 @@ namespace Game.Systems.Player
         
         [SerializeField] private Vector3 lastMousePosition;
 
-        private PointerEventData pointerData; 
+        private PointerEventData pointerData;
+
+        public bool AllowUIClick = true;
+
+        public bool HoveringOverUI;
         
         protected override void Start()
         {
@@ -91,20 +95,25 @@ namespace Game.Systems.Player
                 pointerData.pointerCurrentRaycast = FindFirstRaycast(raycastResults);
                 eventSystem.SetSelectedGameObject(pointerData.pointerCurrentRaycast.gameObject);
                 
+                HoveringOverUI = pointerData.pointerCurrentRaycast.isValid;
+                
                 ProcessMove(pointerData);
 
                 MouseButtonEventData buttonEventData = new MouseButtonEventData();
                 buttonEventData.buttonData = pointerData;
                 buttonEventData.buttonState = PointerEventData.FramePressState.NotChanged;
-                
-                if (Input.GetMouseButtonDown(0))
-                {
-                    buttonEventData.buttonState = PointerEventData.FramePressState.Pressed;
-                }
 
-                if (Input.GetMouseButtonUp(0))
+                if (AllowUIClick)
                 {
-                    buttonEventData.buttonState = PointerEventData.FramePressState.Released;
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        buttonEventData.buttonState = PointerEventData.FramePressState.Pressed;
+                    }
+
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        buttonEventData.buttonState = PointerEventData.FramePressState.Released;
+                    }
                 }
                 
                 ProcessMousePress(buttonEventData);

@@ -12,5 +12,8 @@ namespace Game.Systems.Player
         public bool AutoChangeCursor = true;
         [FormerlySerializedAs("CursorType")] public PlayerCursorData.CursorGraphicType cursorGraphicType;
         public PlayerCursorData.CursorGraphicType OnInteractType;
+        
+        
+        
     }
 }

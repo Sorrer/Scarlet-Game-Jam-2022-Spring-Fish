@@ -13,7 +13,7 @@ namespace Game.Systems.Player
         public PlayerState currentState = null;
 
         public CursorInteractor cursorInteractor;
-
+        public PlayerController controller;
         private void Start()
         {
             if (currentState == null)
@@ -33,14 +33,6 @@ namespace Game.Systems.Player
                 return;
             }
 
-            if (currentState.settings.AllowInventoryOpen)
-            {
-                if (Input.GetMouseButton(1))
-                {
-                    SetState(PlayerStateTypes.INVENTORY);
-                }
-            }
-
             if (currentState.settings.interactionSettings.AutoChangeCursor)
             {
                 // TODO change to optimized events
@@ -55,6 +47,14 @@ namespace Game.Systems.Player
             }
 
             currentState.StateUpdate();
+
+            if (currentState.settings.AllowInventoryOpen)
+            {
+                if (Input.GetMouseButtonDown(1) && currentState.settings.StateID != PlayerStateTypes.INVENTORY)
+                {
+                    SetState(PlayerStateTypes.INVENTORY);
+                }
+            }
             
             switch (currentState.ActiveState)
             {
@@ -114,6 +114,7 @@ namespace Game.Systems.Player
             currentState.OnStateEnter?.Invoke();
             currentState.StateStart();
             currentState.ActiveState = PlayerState.StateActive.ACTIVE;
+            controller.AllowUIClick = currentState.settings.AllowUIInteraction;
             
             SetupCursor(lastState,currentState);
         }
@@ -149,6 +150,7 @@ namespace Game.Systems.Player
         {
             foreach (var state in states)
             {
+                if (state == null) continue;
                 if (state.settings.StateID == type) return state;
             }
             
@@ -159,17 +161,17 @@ namespace Game.Systems.Player
         private void OnValidate()
         {
             //Check for duplicates
-
+            
             HashSet<PlayerStateTypes> currentTypes = new HashSet<PlayerStateTypes>();
-
             for (int i = states.Count - 1; i >= 0; i--)
             {
                 var state = states[i];
+                if (state == null) continue;
                 
                 if (currentTypes.Contains(state.settings.StateID))
                 {
-                    Debug.LogError("State duplicate detected, removing duplicate " + state.settings.StateID + " - " + state.name);
-                    states.RemoveAt(i);
+                    Debug.LogWarning("State duplicate detected, removing duplicate " + state.settings.StateID + " - " + state.name);
+                    states[i] = null;
                 }
                 else
                 {

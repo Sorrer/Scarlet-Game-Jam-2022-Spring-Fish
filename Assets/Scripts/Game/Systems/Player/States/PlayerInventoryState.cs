@@ -1,4 +1,5 @@
 ﻿using Game.Systems.CursorInteractable;
+using Game.Systems.Inventory;
 using UnityEngine;
 
 namespace Game.Systems.Player.States
@@ -6,10 +7,15 @@ namespace Game.Systems.Player.States
     public class PlayerInventoryState : PlayerState
     {
         public GameObject InventoryRoot;
+        public InventorySO inventory;
+        public PlayerCursorData cursor;
+
+        public PlayerController controller;
         
         public override void StateStart()
         {
             InventoryRoot.SetActive(true);
+            cursor.cursorGraphicType = PlayerCursorData.CursorGraphicType.DEFAULT;
         }
 
         
@@ -20,14 +26,23 @@ namespace Game.Systems.Player.States
             //Add event callbacks 
             //If right click, close UI
 
-
-            if (Input.GetMouseButton(1))
+            if (controller.HoveringOverUI)
             {
-                IInteractable currentlyHeld = null;
+                cursor.cursorGraphicType = PlayerCursorData.CursorGraphicType.SELECT;
+            }
+            else
+            {
+                
+                cursor.cursorGraphicType = PlayerCursorData.CursorGraphicType.DEFAULT;
+            }
 
+            if (Input.GetMouseButtonDown(1))
+            {
+                InventoryItem currentlyHeld = inventory.HeldItem;
+                
                 if (currentlyHeld != null)
                 {
-                    Finish(PlayerStateTypes.INVENTORY);
+                    Finish(PlayerStateTypes.INTERACT);
                 }
                 else
                 {
@@ -35,6 +50,8 @@ namespace Game.Systems.Player.States
                 }
             }
         }
+        
+        
 
         public override void OnInteract(IInteractable interacted)
         {

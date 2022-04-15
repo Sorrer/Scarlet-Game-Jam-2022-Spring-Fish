@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbc4147931e34f0c9414217651e7e0da, type: 3}
-  m_Name: Feed Interaction
+  m_Name: InteractState
   m_EditorClassIdentifier: 
   EnableInteractions: 1
-  SingleInteraction: 1
+  SingleInteraction: 0
   InteractionLayer:
     serializedVersion: 2
-    m_Bits: 1024
-  cursorGraphicType: 6
-  OnInteractType: 3
+    m_Bits: 128
+  AutoChangeCursor: 0
+  cursorGraphicType: 0
+  OnInteractType: 0

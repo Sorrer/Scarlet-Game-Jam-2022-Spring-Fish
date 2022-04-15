@@ -1,8 +1,10 @@
-﻿using Game.Systems.CursorInteractable;
+﻿using System;
+using Game.Systems.CursorInteractable;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 namespace Game.Systems.Player.States
 {
@@ -13,7 +15,10 @@ namespace Game.Systems.Player.States
         public float BlinkTime;
         public float HoldBlinkTime;
 
+        public CursorInteractor interactor;
+
         public UnityEvent OnBlinkHold;
+        public Image blinkImage;
         
         private float curBlinkTime;
         private float lastCurBlinkTime;
@@ -36,8 +41,9 @@ namespace Game.Systems.Player.States
                 return;
             }
             curBlinkTime = 0;
-            vignettePreStart = _vignette.intensity.value;
+            vignettePreStart = 0.331f;
             lastCurBlinkTime = 0;
+            interactor.data.cursorGraphicType = PlayerCursorData.CursorGraphicType.EYE_CLOSED;
         }
 
         
@@ -47,8 +53,16 @@ namespace Game.Systems.Player.States
         {
             curBlinkTime += Time.deltaTime;
             
-
-            if (curBlinkTime >= BlinkTime)
+            if (curBlinkTime >= BlinkTime * 2 + HoldBlinkTime)
+            {
+                Finish();
+                
+            }
+            else if (curBlinkTime >= BlinkTime + HoldBlinkTime)
+            {
+                SetBlink(BlinkCurve.Evaluate(1 - (curBlinkTime-HoldBlinkTime - BlinkTime)/(BlinkTime)));
+                interactor.data.cursorGraphicType = PlayerCursorData.CursorGraphicType.EYE;
+            }else if (curBlinkTime >= BlinkTime)
             {
                 
                 SetBlink(BlinkCurve.Evaluate(curBlinkTime/BlinkTime));
@@ -58,14 +72,7 @@ namespace Game.Systems.Player.States
                      OnBlinkHold?.Invoke();
                 }
                 
-            }else if (curBlinkTime >= BlinkTime + HoldBlinkTime)
-            {
-                SetBlink(BlinkCurve.Evaluate((curBlinkTime-HoldBlinkTime - BlinkTime)/(BlinkTime)));
-            }else if (curBlinkTime >= BlinkTime * 2 + HoldBlinkTime)
-            {
-                Finish();
-            }
-            else
+            }else
             {
                 SetBlink(BlinkCurve.Evaluate(curBlinkTime/BlinkTime));
             }
@@ -76,7 +83,8 @@ namespace Game.Systems.Player.States
         private void SetBlink(float amount)
         {
             Mathf.Clamp(amount, 0, 1);
-            _vignette.intensity.value = (_vignette.intensity.max - _vignette.intensity.min) * amount;
+            _vignette.intensity.value = (_vignette.intensity.max - _vignette.intensity.min) * amount * 2;
+            blinkImage.color = new Color(0, 0, 0, amount);
         }
 
         public override void OnInteract(IInteractable interacted)
@@ -87,6 +95,14 @@ namespace Game.Systems.Player.States
         public override void StateStop()
         {
             _vignette.intensity.value = vignettePreStart;
+        }
+
+        private void OnDestroy()
+        {
+            if (ActiveState == StateActive.ACTIVE)
+            {
+                _vignette.intensity.value = vignettePreStart;
+            }
         }
     }
 }

@@ -33,7 +33,7 @@ namespace Game.Systems.Player.States
         public override void OnDeselect(IInteractable interacted)
         {
             base.OnDeselect(interacted);
-            interactor.data.cursorGraphicType = PlayerCursorData.CursorGraphicType.DEFAULT;
+            interactor.data.cursorGraphicType = PlayerCursorData.CursorGraphicType.SELECT_CIRCLE;
         }
 
         public override void OnInteract(IInteractable interacted)
