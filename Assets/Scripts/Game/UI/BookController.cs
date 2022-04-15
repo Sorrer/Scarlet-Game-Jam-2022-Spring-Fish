@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game.UI.Book
 {
@@ -9,7 +10,7 @@ namespace Game.UI.Book
     {
         [Header("Animation")]
         [SerializeField]
-        private Animation animation;
+        private Animator animator;
         [SerializeField]
         private AnimationClip flipLeftClip;
         [SerializeField]
@@ -17,67 +18,19 @@ namespace Game.UI.Book
 
         [Header("Dependencies")]
         [SerializeField]
+        private PageController leftPageController;
+        [SerializeField]
+        private PageController rightPageController;
+        [SerializeField]
         private Transform leftPageTrans;
         [SerializeField]
         private Transform rightPageTrans;
-
-        private PageController leftPageContent
-        {
-            get => leftPageTrans.childCount > 0 ? leftPageTrans.GetChild(0).GetComponent<PageController>() : null;
-            set
-            {
-                if (leftPageContent != null)
-                    Destroy(leftPageContent);
-                value.transform.parent = leftPageTrans;
-
-                // Reset local position and scale
-                value.transform.position = Vector2.zero;
-                value.transform.localScale = Vector2.one;
-            }
-        }
-        private PageController rightPageContent
-        {
-            get => rightPageTrans.childCount > 0 ? rightPageTrans.GetChild(0).GetComponent<PageController>() : null;
-            set
-            {
-                value.transform.parent = rightPageTrans;
-
-                // Reset local position and scale
-                value.transform.position = Vector2.zero;
-                value.transform.localScale = Vector2.one;
-            }
-        }
-        private PageController backLeftPageContent
-        {
-            get => backLeftPageTrans.childCount > 0 ? backLeftPageTrans.GetChild(0).GetComponent<PageController>() : null;
-            set
-            {
-                value.transform.parent = backLeftPageTrans;
-
-                // Reset local position and scale
-                value.transform.position = Vector2.zero;
-                value.transform.localScale = Vector2.one;
-            }
-        }
-        private PageController backRIghtPageContent
-        {
-            get => backRIghtPageTrans.childCount > 0 ? backRIghtPageTrans.GetChild(0).GetComponent<PageController>() : null;
-            set
-            {
-                if (backRIghtPageContent != null)
-                    Destroy(backRIghtPageContent);
-                value.transform.parent = backRIghtPageTrans;
-
-                // Reset local position and scale
-                value.transform.position = Vector2.zero;
-                value.transform.localScale = Vector2.one;
-            }
-        }
-
         [SerializeField]
-        private Transform backLeftPageTrans;
+        private PageController backLeftPageController;
         [SerializeField]
-        private Transform backRIghtPageTrans;
+        private PageController backRightPageController;
+        [SerializeField]
+        private AudioSource flipPageAudioSource;
         [SerializeField]
         private GameObject emptyPageContentPrefab;
 
@@ -88,12 +41,22 @@ namespace Game.UI.Book
         private int currPageIdx;
 
         public List<GameObject> PageContentList { get => pageContentList; set => pageContentList = value; }
+
         public int CurrPageIdx { get => currPageIdx; set => currPageIdx = value; }
+        private int LeftPageIdx => CurrPageIdx;
+        private int RightPageIdx => CurrPageIdx + 1;
+        private bool LeftPageCanFlip => LeftPageIdx > 0;
+        private bool RightPageCanFlip => RightPageIdx < PageContentList.Count - 1;
+
         public GameObject CurrPageContent => PageContentList[CurrPageIdx];
 
         private Coroutine flipCoroutine;
-        private PageController leftPageContentInst;
-        private PageController rightPageContentInst;
+
+        public void Awake()
+        {
+            if (pageContentList.Count > 0)
+                Construct(pageContentList.ToArray());
+        }
 
         public void Construct(IEnumerable<GameObject> newPageContentList)
         {
@@ -107,10 +70,8 @@ namespace Game.UI.Book
 
 
             currPageIdx = 0;
-            leftPageContent = Instantiate(PageContentList[0]).GetComponent<PageController>();
-            leftPageContent.Construct(0, currPageIdx > 0);
-            rightPageContent = Instantiate(PageContentList[1]).GetComponent<PageController>();
-            rightPageContent.Construct(1, currPageIdx < PageContentList.Count - 1);
+            leftPageController.Construct(LeftPageIdx, LeftPageCanFlip, Instantiate(PageContentList[LeftPageIdx]));
+            rightPageController.Construct(RightPageIdx, RightPageCanFlip, Instantiate(PageContentList[RightPageIdx]));
         }
 
         public void FlipLeft()
@@ -120,8 +81,8 @@ namespace Game.UI.Book
                 // There is an ongoing flip animation.
                 // We must finish the animation.
                 FinishFlip();
+                return;
             }
-
 
             if (currPageIdx + 2 >= PageContentList.Count)
             {
@@ -134,31 +95,30 @@ namespace Game.UI.Book
 
         private IEnumerator FlipLeftCoroutine()
         {
-            animation.clip = flipLeftClip;
-            animation.Play();
+            flipPageAudioSource.Play();
+            animator.Play("Flip Left");
             var newLeftPageContentPrefab = pageContentList[currPageIdx];
-            var newRightPageContentPrefab = pageContentList[currPageIdx + 1];
+            var newRightPageContentPrefab = pageContentList[RightPageIdx];
 
-            rightPageContentInst = Instantiate(newLeftPageContentPrefab, backRIghtPageTrans).GetComponent<PageController>();
-            rightPageContentInst.Construct(currPageIdx + 1, currPageIdx < PageContentList.Count - 1);
+            backRightPageController.Construct(RightPageIdx, RightPageCanFlip, Instantiate(newRightPageContentPrefab));
 
-            while (animation.isPlaying)
+            yield return new WaitForEndOfFrame();
+
+            float time = 0;
+            bool switched = false;
+            while (time <= flipLeftClip.length)
             {
                 // If we cross, then switch content
-                if (rightPageTrans.localScale.x <= 0)
+                if (!switched && rightPageTrans.localScale.x <= 0)
                 {
-                    leftPageContentInst = Instantiate(newLeftPageContentPrefab, leftPageTrans).GetComponent<PageController>();
-                    leftPageContentInst.Construct(currPageIdx, currPageIdx > 0);
-
-                    if (rightPageContent != null)
-                    {
-                        Destroy(rightPageContent.gameObject);
-                    }
-
+                    switched = true;
                     // Remember, during the flip, the right page becomes the left page temporarily
-                    rightPageContent = leftPageContentInst;
+                    rightPageController.Construct(LeftPageIdx, LeftPageCanFlip, Instantiate(newLeftPageContentPrefab), true);
                 }
+
                 yield return new WaitForEndOfFrame();
+                
+                time += Time.deltaTime;
             }
 
             FinishFlip();
@@ -171,10 +131,11 @@ namespace Game.UI.Book
                 // There is an ongoing flip animation.
                 // We must finish the animation.
                 FinishFlip();
+                return;
             }
 
 
-            if (currPageIdx - 2 <= 0)
+            if (currPageIdx - 2 < 0)
             {
                 // Don't flip if we can't
                 return;
@@ -185,31 +146,28 @@ namespace Game.UI.Book
 
         private IEnumerator FlipRightCoroutine()
         {
-            animation.clip = flipRightClip;
-            animation.Play();
+            flipPageAudioSource.Play();
+            animator.Play("Flip Right");
             var newLeftPageContentPrefab = pageContentList[currPageIdx];
-            var newRightPageContentPrefab = pageContentList[currPageIdx + 1];
+            var newRightPageContentPrefab = pageContentList[RightPageIdx];
 
-            leftPageContentInst = Instantiate(newLeftPageContentPrefab, backLeftPageTrans).GetComponent<PageController>();
-            leftPageContentInst.Construct(currPageIdx + 1, currPageIdx > 0);
+            backLeftPageController.Construct(LeftPageIdx, LeftPageCanFlip, Instantiate(newLeftPageContentPrefab));
 
-            while (animation.isPlaying)
+            float time = 0;
+            bool switched = false;
+            while (time <= flipRightClip.length)
             {
                 // If we cross, then switch content
-                if (leftPageTrans.localScale.x <= 0)
+                if (!switched && leftPageTrans.localScale.x <= 0)
                 {
-                    rightPageContentInst = Instantiate(newRightPageContentPrefab, rightPageTrans).GetComponent<PageController>();
-                    rightPageContentInst.Construct(currPageIdx, currPageIdx < PageContentList.Count - 1);
-
-                    if (leftPageContent != null)
-                    {
-                        Destroy(leftPageContent.gameObject);
-                    }
-
+                    switched = true;
                     // Remember, during the flip, the left page becomes the right page temporarily
-                    leftPageContent = rightPageContentInst;
+                    leftPageController.Construct(RightPageIdx, RightPageCanFlip, Instantiate(newRightPageContentPrefab), true);
                 }
+
                 yield return new WaitForEndOfFrame();
+
+                time += Time.deltaTime;
             }
 
             FinishFlip();
@@ -222,10 +180,12 @@ namespace Game.UI.Book
 
             StopCoroutine(flipCoroutine);
             flipCoroutine = null;
+            animator.Play("Reset");
 
-            // At end of animation, we reset animation and swap left and right page content
-            rightPageContent = rightPageContentInst;
-            leftPageContent = leftPageContentInst;
+            // At end of animation, we reset animation and assign the correct pages to the left and right
+            leftPageController.Construct(LeftPageIdx, LeftPageCanFlip, Instantiate(pageContentList[LeftPageIdx]));
+            rightPageController.Construct(RightPageIdx, RightPageCanFlip, Instantiate(pageContentList[RightPageIdx]));
+            
         }
     }
 }
