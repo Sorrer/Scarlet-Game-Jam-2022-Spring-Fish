@@ -15,7 +15,8 @@ namespace Game.Systems.Inventory
     {
         //Only one of each item
         private HashSet<InventoryItem> items = new HashSet<InventoryItem>();
-    
+
+        public InventoryItem HeldItem;
     
         public List<InventoryItem> GetAllitems()
         {

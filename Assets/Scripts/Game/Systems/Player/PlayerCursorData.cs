@@ -9,7 +9,7 @@ namespace Game.Systems.Player
 
         public enum CursorGraphicType
         {
-            DEFAULT, BUILD, PICKUP, INVALID, SELECT, SELECT_CIRCLE_INVALID, SELECT_CIRCLE
+            DEFAULT, BUILD, PICKUP, INVALID, SELECT, SELECT_CIRCLE_INVALID, SELECT_CIRCLE, FEED, EYE, EYE_CLOSED
         }
         
         

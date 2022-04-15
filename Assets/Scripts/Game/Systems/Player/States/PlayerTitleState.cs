@@ -1,27 +1,49 @@
 ﻿using Game.Systems.CursorInteractable;
+using UnityEngine;
+using UnityEngine.Playables;
 
 namespace Game.Systems.Player.States
 {
     public class PlayerTitleState : PlayerState
     {
+
+        public PlayableDirector playableDirector;
+        public GameObject titleScreen;
+        
+        private bool _startGame = false;
+        private float curTime;
         public override void StateStart()
         {
-            //throw new System.NotImplementedException();
+            //Disable title UI
+            _startGame = false;
+            titleScreen.SetActive(true);
         }
 
+        public void OnStartClicked()
+        {
+            _startGame = true;
+            playableDirector.Play();
+        }
+        
         public override void StateUpdate()
         {
-            //throw new System.NotImplementedException();
+            if (_startGame)
+            {
+                if (playableDirector.state != PlayState.Playing)
+                {
+                    Finish();
+                }
+            }
         }
 
         public override void OnInteract(IInteractable interacted)
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public override void StateStop()
         {
-            throw new System.NotImplementedException();
+            titleScreen.SetActive(false);
         }
     }
 }
