@@ -9,6 +9,7 @@ namespace Game.Systems.Player
         public bool EnableInteractions;
         public bool SingleInteraction;
         public LayerMask InteractionLayer;
+        public bool AutoChangeCursor = true;
         [FormerlySerializedAs("CursorType")] public PlayerCursorData.CursorGraphicType cursorGraphicType;
         public PlayerCursorData.CursorGraphicType OnInteractType;
     }

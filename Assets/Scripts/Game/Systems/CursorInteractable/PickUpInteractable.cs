@@ -21,5 +21,10 @@ namespace Game.Systems.CursorInteractable
         {
             Debug.Log("Interacted");
         }
+
+        public InteractType GetInteractType()
+        {
+            return InteractType.PickUp;
+        }
     }
 }

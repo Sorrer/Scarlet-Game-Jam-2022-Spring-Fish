@@ -41,13 +41,17 @@ namespace Game.Systems.Player
                 }
             }
 
-            if (cursorInteractor.HasSelected)
+            if (currentState.settings.interactionSettings.AutoChangeCursor)
             {
-                cursorInteractor.data.cursorGraphicType = currentState.settings.interactionSettings.OnInteractType;
-            }
-            else
-            {
-                cursorInteractor.data.cursorGraphicType = currentState.settings.interactionSettings.cursorGraphicType;
+                // TODO change to optimized events
+                if (cursorInteractor.HasSelected)
+                {
+                    cursorInteractor.data.cursorGraphicType = currentState.settings.interactionSettings.OnInteractType;
+                }
+                else
+                {
+                    cursorInteractor.data.cursorGraphicType = currentState.settings.interactionSettings.cursorGraphicType;
+                }
             }
 
             currentState.StateUpdate();
