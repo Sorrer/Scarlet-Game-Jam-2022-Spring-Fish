@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Game.Systems.Environment
 {
@@ -28,18 +29,39 @@ namespace Game.Systems.Environment
 
         public struct ProgressionEmersion
         {
-            public float EmersionRate;
+            public int SpawnWeight;
             public ProgressionElement.ProgressionStage stage;
         }
         
         public void Set(List<ProgressionEmersion> progression)
-        {
-            float total = 0;
-
+        {                                                                                                                                                                             
+            int total = 0;
+                
             for (int i = 0; i < progression.Count; i++)
             {
-                total += progression[i].EmersionRate;
+                total += progression[i].SpawnWeight;
+            }
+
+
+            for (int i = 0; i < elements.Count; i++)
+            {
+                elements[i].SetProgressionStage(GetStage(progression, total));
             }
         }
+
+        private ProgressionElement.ProgressionStage GetStage(List<ProgressionEmersion> progressions, int total)
+        {
+            int randomValue = (int) Random.value * total;
+
+            for (int i = 0; i < progressions.Count; i++)
+            {
+                randomValue -= progressions[i].SpawnWeight;
+                if (randomValue <= 0)
+                {
+                }
+            }
+
+            return progressions[progressions.Count - 1].stage;
+        } 
     }
 }
