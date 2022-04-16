@@ -27,6 +27,7 @@ namespace Game.Systems.Environment
             }
         }
 
+        [Serializable]
         public struct ProgressionEmersion
         {
             public int SpawnWeight;

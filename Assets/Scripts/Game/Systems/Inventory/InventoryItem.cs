@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Game.Systems.Environment;
 using UnityEngine;
 
 namespace Game.Systems.Inventory
@@ -17,7 +19,13 @@ namespace Game.Systems.Inventory
         {
             return name.GetHashCode();
         }
-        
-        
+
+        public override string ToString()
+        {
+            return $"{name} - {Tooltip}";
+
+        }
+
+        public List<DynamicForest.ProgressionEmersion> forestSettings = new List<DynamicForest.ProgressionEmersion>();
     }
 }

@@ -11,9 +11,12 @@ namespace Game.Systems.Player.States
         public PlayerCursorData cursor;
 
         public PlayerController controller;
+
+        public Vector3 lastMousePos;
         
         public override void StateStart()
         {
+            lastMousePos = cursor.position;
             InventoryRoot.SetActive(true);
             cursor.cursorGraphicType = PlayerCursorData.CursorGraphicType.DEFAULT;
         }
@@ -60,6 +63,7 @@ namespace Game.Systems.Player.States
 
         public override void StateStop()
         { 
+            cursor.position = lastMousePos;
             InventoryRoot.SetActive(false);
         }
     }

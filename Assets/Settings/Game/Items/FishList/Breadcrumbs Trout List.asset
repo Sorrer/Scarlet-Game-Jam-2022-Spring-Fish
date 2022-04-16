@@ -16,12 +16,6 @@ MonoBehaviour:
   FishPrefab: {fileID: 6906639117331138815, guid: aa5e33dd3c96b934481c2996318cf8d1, type: 3}
   FeedItem: {fileID: 11400000, guid: 33c1c22a295d645498c1347b06987c1f, type: 2}
   itemsReceiveOrder:
-  - item: {fileID: 0}
-    GoBackToIndex: 0
-    GoBackIndex: 0
-  - item: {fileID: 0}
-    GoBackToIndex: 0
-    GoBackIndex: 0
-  - item: {fileID: 0}
+  - item: {fileID: 11400000, guid: 14bb3db4ff15a5a4a9c8eb3c18a59525, type: 2}
     GoBackToIndex: 0
     GoBackIndex: 0

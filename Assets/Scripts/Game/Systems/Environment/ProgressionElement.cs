@@ -8,7 +8,7 @@ public class ProgressionElement : MonoBehaviour
 {
     public enum ProgressionStage
     {
-        NONE, STUMP, BURNT, DEFAULT, FLORISH
+        NONE, STUMP, BURNT, BURNT_STUMP, DEFAULT, FLORISH
     }
     
     public GameObject StumpModel;
@@ -43,6 +43,9 @@ public class ProgressionElement : MonoBehaviour
                     break;
                 case ProgressionStage.STUMP:
                     StumpModel.SetActive(true);
+                    break;
+                case ProgressionStage.BURNT_STUMP:
+                    BurntStump.SetActive(true);
                     break;
                 case ProgressionStage.BURNT:
                     BurntModel.SetActive(true);

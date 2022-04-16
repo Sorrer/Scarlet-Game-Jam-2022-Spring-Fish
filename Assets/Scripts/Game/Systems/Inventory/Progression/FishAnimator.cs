@@ -30,7 +30,8 @@ namespace Game.Systems.Inventory.Progression
                 IsFinished = true;
                 return;
             }
-            
+
+            IsFinished = false;
             currentFish.StartFish();
         }
 
