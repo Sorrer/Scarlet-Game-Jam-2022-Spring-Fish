@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Game.Systems.Inventory
 {
+    // TODO NOW: Refactor this system to take in any number of inptu
     [CreateAssetMenu(fileName = "Crafting List", menuName = "Game/Crafting List")]
     public class CraftingList : ScriptableObject
     {

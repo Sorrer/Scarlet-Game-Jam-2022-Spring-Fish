@@ -9,7 +9,7 @@ using TMPro;
 namespace Game.UI
 {
     // Resizes this object based on the preferred size of a TMP Text
-    [ExecuteInEditMode]
+    [ExecuteAlways]
     public class TextSizer : MonoBehaviour
     {
         public TMP_Text text;
@@ -91,6 +91,8 @@ namespace Game.UI
         public virtual void Refresh()
         {
             forceRefresh = true;
+            text.ForceMeshUpdate();
+            Update();
         }
     }
 }

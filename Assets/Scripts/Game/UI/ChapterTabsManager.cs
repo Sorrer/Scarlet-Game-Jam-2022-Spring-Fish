@@ -27,6 +27,7 @@ namespace Game.UI.Book
             {
                 SelectedTab = tabs[0];
                 SelectedTab.Selected = true;
+                SelectedTab.OnClick.Invoke();
             }
         }
 

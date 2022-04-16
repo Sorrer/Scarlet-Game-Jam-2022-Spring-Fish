@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Game.UI.Book
 {
-    [ExecuteInEditMode]
+    [ExecuteAlways]
     public class TextSizerFillWidth : MonoBehaviour
     {
         [Header("Settings")]
@@ -31,6 +31,11 @@ namespace Game.UI.Book
                     textSizer.Refresh();
                 }
             }
+        }
+
+        public void Refresh()
+        {
+            Update();
         }
     }
 }

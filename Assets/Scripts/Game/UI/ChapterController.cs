@@ -8,19 +8,24 @@ namespace Game.UI.Book
 {
     public class ChapterController : MonoBehaviour
     {
-        private List<Transform> pageContentTransforms = new List<Transform>();
+        private List<GameObject> pageContentList = new List<GameObject>();
+
+        public List<GameObject> PageContentList { get => pageContentList; }
 
         private void Awake()
         {
             foreach (Transform child in transform)
-                pageContentTransforms.Add(child);
+            {
+                pageContentList.Add(child.gameObject);
+                child.gameObject.SetActive(false);
+            }
         }
 
         private void Update()
         {
-            foreach (Transform content in pageContentTransforms)
-                if (content.parent == null)
-                    content.SetParent(transform);
+            foreach (GameObject content in pageContentList)
+                if (content.transform.parent == null)
+                    content.transform.SetParent(transform);
         }
     }
 }

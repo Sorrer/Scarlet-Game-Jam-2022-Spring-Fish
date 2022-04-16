@@ -9,9 +9,9 @@ using UnityEngine.UI;
 
 namespace Game.UI.Book
 {
-    public class BookItemsManager : MonoBehaviour
+    public class InventoryItemsManager : MonoBehaviour
     {
-        public static BookItemsManager Instance { get; set; }
+        public static InventoryItemsManager Instance { get; set; }
         public Transform DragDropHolder { get => dragDropHolder; set => dragDropHolder = value; }
 
         [Header("Dependencies")]
@@ -25,6 +25,8 @@ namespace Game.UI.Book
         private TextMeshProUGUI tooltipTitle;
         [SerializeField]
         private TextMeshProUGUI tooltipDesc;
+        [SerializeField]
+        private Vector2 tooltipOffset;
 
         private void Awake()
         {
@@ -39,14 +41,25 @@ namespace Game.UI.Book
 
         public void DisplayTooltip(InventoryItem itemData)
         {
-            tooltipTitle.text = itemData.name;
+            tooltipTitle.text = itemData.Name;
             tooltipDesc.text = itemData.Tooltip;
+
+            // Refresh everyone
+            tooltipDesc.GetComponent<TextSizer>().Refresh();
+            tooltipTitle.GetComponent<TextSizer>().Refresh();
+            tooltipDesc.GetComponent<TextSizerFillWidth>().Refresh();
+
             tooltip.SetActive(true);
         }
 
         public void ClearTooltip()
         {
             tooltip.SetActive(false);
+        }
+
+        public void MoveTooltip(Vector2 position)
+        {
+            tooltip.transform.position = position + tooltipOffset;
         }
     }
 }

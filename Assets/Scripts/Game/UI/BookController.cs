@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -56,30 +57,10 @@ namespace Game.UI.Book
         public void Awake()
         {
             if (pageContentList.Count > 0)
-                Construct(pageContentList.ToArray());
+                LoadPageContents(pageContentList.ToArray());
         }
 
-        private void Update()
-        {
-            if (Input.GetMouseButtonUp(0))
-            {
-                PointerEventData pointerData = new PointerEventData(EventSystem.current)
-                {
-                    pointerId = -1,
-                };
-
-                pointerData.position = Input.mousePosition;
-
-                List<RaycastResult> results = new List<RaycastResult>();
-                EventSystem.current.RaycastAll(pointerData, results);
-
-                Debug.Log(results.Count);
-                foreach (var result in results)
-                    Debug.Log(result.gameObject.name);
-            }
-        }
-
-        public void Construct(IEnumerable<GameObject> newPageContentList)
+        public void LoadPageContents(IEnumerable<GameObject> newPageContentList)
         {
             PageContentList.Clear();
             pageContentList.AddRange(newPageContentList);
@@ -88,8 +69,14 @@ namespace Game.UI.Book
                 pageContentList.Add(emptyPageContent);
             if (pageContentList.Count == 0)
                 throw new Exception("BookController must have at least 2 pages!");
+            currPageIdx = 0;
 
             ResetBook();
+        }
+
+        public void LoadChapter(ChapterController chapter)
+        {
+            LoadPageContents(chapter.PageContentList);
         }
 
         public void ResetBook()
@@ -213,15 +200,6 @@ namespace Game.UI.Book
             
             backLeftPageController.ClearContent();
             backRightPageController.ClearContent();
-        }
-
-        public void LoadChapter(Transform chapter)
-        {
-            PageContentList.Clear();
-            foreach (Transform child in chapter)
-                PageContentList.Add(child.gameObject);
-
-            ResetBook();
         }
     }
 }

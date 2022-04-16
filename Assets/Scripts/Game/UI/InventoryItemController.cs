@@ -9,7 +9,7 @@ using UnityEngine.UI;
 namespace Game.UI.Book
 {
     [RequireComponent(typeof(Image))]
-    public class BookItemController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
+    public class InventoryItemController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [Header("Dependencies")]
         [SerializeField]
@@ -31,13 +31,17 @@ namespace Game.UI.Book
         [SerializeField]
         private float moveBackDuration;
 
-        public InventoryItem ItemData { get; set; }
+        [SerializeField]
+        private InventoryItem itemData;
+        public InventoryItem ItemData { get => itemData; set => itemData = value; }
 
         private Transform originalParent;
         private Vector2 originalPosition;
 
         private bool dragging;
         private Coroutine moveBackCoroutine;
+        private float time = 0;
+        private bool hover;
 
         public void Construct(InventoryItem newItemData)
         {
@@ -50,10 +54,19 @@ namespace Game.UI.Book
             return Input.mousePosition;
         }
 
-        private float time = 0;
+        private void Awake()
+        {
+            if (itemData != null)
+                Construct(ItemData);
+        }
 
         private void Update()
         {
+            if (dragging || hover)
+            {
+                InventoryItemsManager.Instance.MoveTooltip(GetMousePos());
+            }
+
             if (dragging)
             {
                 if (time < moveToMouseDuration)
@@ -72,6 +85,38 @@ namespace Game.UI.Book
             if (eventData.button == PointerEventData.InputButton.Left)
             {
                 dragging = false;
+
+                PointerEventData pointerData = new PointerEventData(EventSystem.current)
+                {
+                    pointerId = -1,
+                };
+                pointerData.position = Input.mousePosition;
+
+                List<RaycastResult> results = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(pointerData, results);
+
+                if (results.Count > 0)
+                {
+                    foreach (var result in results)
+                    {
+                        var slotController = result.gameObject.GetComponent<InventoryItemSlotController>();
+                        if (slotController != null && slotController.TryAcceptItem(this)) 
+                        {
+                            if (originalParent != null)
+                            {
+                                var parentSlotController = originalParent.GetComponent<InventoryItemSlotController>();
+                                // We've moved ourselves to a different slot, so we need to remove
+                                // this item from it's original slot.
+                                if (parentSlotController != null)
+                                    parentSlotController.ItemController = null;
+                            }
+                            originalParent = slotController.transform;
+                            originalPosition = slotController.transform.position;
+                            break;
+                        }
+                    }
+                }
+
                 moveBackCoroutine = StartCoroutine(MoveBackEnum());
             }
         }
@@ -82,16 +127,22 @@ namespace Game.UI.Book
             {
                 dragging = true;
 
-                originalPosition = transform.position;
-                originalParent = transform.parent;
-                transform.SetParent(BookItemsManager.Instance.DragDropHolder);
+                if (moveBackCoroutine != null)
+                {
+                    // We are interuppting the move back to pick it up.
+                    // Therefore we do not need to set set original position or
+                    // original parent, because that was all saved before.
+                    StopCoroutine(moveBackCoroutine);
+                } else
+                {
+                    originalPosition = transform.position;
+                    originalParent = transform.parent;
+                    transform.SetParent(InventoryItemsManager.Instance.DragDropHolder);
+                }
                 time = 0;
 
                 pickUpSfx.Play();
                 animator.Play("Item Shake");
-
-                if (moveBackCoroutine != null)
-                    StopCoroutine(moveBackCoroutine);
             }
         }
 
@@ -108,16 +159,19 @@ namespace Game.UI.Book
             }
             transform.position = originalPosition;
             transform.SetParent(originalParent, true);
+            moveBackCoroutine = null;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            BookItemsManager.Instance.DisplayTooltip(ItemData);
+            hover = true;
+            InventoryItemsManager.Instance.DisplayTooltip(ItemData);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            BookItemsManager.Instance.ClearTooltip();
+            hover = false;
+            InventoryItemsManager.Instance.ClearTooltip();
         }
     }
 }
