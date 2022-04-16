@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 namespace Game.UI.Book
 {
+    [RequireComponent(typeof(Image))]
     public class PageCornerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         // PageCornerButton uses PageController

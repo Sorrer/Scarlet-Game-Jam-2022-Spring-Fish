@@ -7,7 +7,7 @@ namespace Game.Systems.Inventory
     [CreateAssetMenu(fileName = "Item", menuName = "Game/Item")]
     public class InventoryItem : ScriptableObject
     {
-        public Texture2D Icon;
+        public Sprite Icon;
         public GameObject Prefab;
         public ItemCategories Category;
         public string Name;

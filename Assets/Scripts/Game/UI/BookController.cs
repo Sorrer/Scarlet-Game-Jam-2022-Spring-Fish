@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Game.UI.Book
@@ -32,7 +33,7 @@ namespace Game.UI.Book
         [SerializeField]
         private AudioSource flipPageAudioSource;
         [SerializeField]
-        private GameObject emptyPageContentPrefab;
+        private GameObject emptyPageContent;
 
         [Header("Settings")]
         [SerializeField]
@@ -58,20 +59,44 @@ namespace Game.UI.Book
                 Construct(pageContentList.ToArray());
         }
 
+        private void Update()
+        {
+            if (Input.GetMouseButtonUp(0))
+            {
+                PointerEventData pointerData = new PointerEventData(EventSystem.current)
+                {
+                    pointerId = -1,
+                };
+
+                pointerData.position = Input.mousePosition;
+
+                List<RaycastResult> results = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(pointerData, results);
+
+                Debug.Log(results.Count);
+                foreach (var result in results)
+                    Debug.Log(result.gameObject.name);
+            }
+        }
+
         public void Construct(IEnumerable<GameObject> newPageContentList)
         {
             PageContentList.Clear();
             pageContentList.AddRange(newPageContentList);
             // Make sure we always have an even count of pages
             if (pageContentList.Count % 2 == 1)
-                pageContentList.Add(emptyPageContentPrefab);
+                pageContentList.Add(emptyPageContent);
             if (pageContentList.Count == 0)
                 throw new Exception("BookController must have at least 2 pages!");
 
+            ResetBook();
+        }
 
+        public void ResetBook()
+        {
             currPageIdx = 0;
-            leftPageController.Construct(LeftPageIdx, LeftPageCanFlip, Instantiate(PageContentList[LeftPageIdx]));
-            rightPageController.Construct(RightPageIdx, RightPageCanFlip, Instantiate(PageContentList[RightPageIdx]));
+            leftPageController.SetContent(LeftPageIdx, LeftPageCanFlip, PageContentList[LeftPageIdx]);
+            rightPageController.SetContent(RightPageIdx, RightPageCanFlip, PageContentList[RightPageIdx]);
         }
 
         public void FlipLeft()
@@ -100,7 +125,7 @@ namespace Game.UI.Book
             var newLeftPageContentPrefab = pageContentList[currPageIdx];
             var newRightPageContentPrefab = pageContentList[RightPageIdx];
 
-            backRightPageController.Construct(RightPageIdx, RightPageCanFlip, Instantiate(newRightPageContentPrefab));
+            backRightPageController.SetContent(RightPageIdx, RightPageCanFlip, newRightPageContentPrefab);
 
             yield return new WaitForEndOfFrame();
 
@@ -113,7 +138,7 @@ namespace Game.UI.Book
                 {
                     switched = true;
                     // Remember, during the flip, the right page becomes the left page temporarily
-                    rightPageController.Construct(LeftPageIdx, LeftPageCanFlip, Instantiate(newLeftPageContentPrefab), true);
+                    rightPageController.SetContent(LeftPageIdx, LeftPageCanFlip, newLeftPageContentPrefab, true);
                 }
 
                 yield return new WaitForEndOfFrame();
@@ -151,7 +176,7 @@ namespace Game.UI.Book
             var newLeftPageContentPrefab = pageContentList[currPageIdx];
             var newRightPageContentPrefab = pageContentList[RightPageIdx];
 
-            backLeftPageController.Construct(LeftPageIdx, LeftPageCanFlip, Instantiate(newLeftPageContentPrefab));
+            backLeftPageController.SetContent(LeftPageIdx, LeftPageCanFlip, newLeftPageContentPrefab);
 
             float time = 0;
             bool switched = false;
@@ -162,7 +187,7 @@ namespace Game.UI.Book
                 {
                     switched = true;
                     // Remember, during the flip, the left page becomes the right page temporarily
-                    leftPageController.Construct(RightPageIdx, RightPageCanFlip, Instantiate(newRightPageContentPrefab), true);
+                    leftPageController.SetContent(RightPageIdx, RightPageCanFlip, newRightPageContentPrefab, true);
                 }
 
                 yield return new WaitForEndOfFrame();
@@ -183,9 +208,20 @@ namespace Game.UI.Book
             animator.Play("Reset");
 
             // At end of animation, we reset animation and assign the correct pages to the left and right
-            leftPageController.Construct(LeftPageIdx, LeftPageCanFlip, Instantiate(pageContentList[LeftPageIdx]));
-            rightPageController.Construct(RightPageIdx, RightPageCanFlip, Instantiate(pageContentList[RightPageIdx]));
+            leftPageController.SetContent(LeftPageIdx, LeftPageCanFlip, pageContentList[LeftPageIdx]);
+            rightPageController.SetContent(RightPageIdx, RightPageCanFlip, pageContentList[RightPageIdx]);
             
+            backLeftPageController.ClearContent();
+            backRightPageController.ClearContent();
+        }
+
+        public void LoadChapter(Transform chapter)
+        {
+            PageContentList.Clear();
+            foreach (Transform child in chapter)
+                PageContentList.Add(child.gameObject);
+
+            ResetBook();
         }
     }
 }

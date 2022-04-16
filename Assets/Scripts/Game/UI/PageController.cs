@@ -38,13 +38,26 @@ namespace Game.UI.Book
         [SerializeField]
         private Sprite bottomDecorFlippableSprite;
 
+        //private Transform contentOriginalParent;
+
         public bool CanFlip { get; set; }
 
-        public void Construct(int pageIdx, bool canFlip, GameObject newContent, bool reversed = false)
+        public void ClearContent()
         {
-            if (content != null)
-                Destroy(content);
+            if (content != null && content.transform.parent == contentHolder)
+            {
+                content.transform.SetParent(null);
+                content.SetActive(false);
+            }
+            content = null;
+        }
+
+        public void SetContent(int pageIdx, bool canFlip, GameObject newContent, bool reversed = false)
+        {
+            ClearContent();
             content = newContent;
+
+            content.SetActive(true);
 
             if (reversed)
             {
@@ -57,6 +70,7 @@ namespace Game.UI.Book
                 pageContentAndDecorHolder.localPosition = Vector2.zero;
             }
 
+            //contentOriginalParent = content.transform.parent;
             content.transform.SetParent(contentHolder, false);
             content.transform.localPosition = Vector2.zero;
             content.transform.localScale = Vector2.one;
