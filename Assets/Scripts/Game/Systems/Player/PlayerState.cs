@@ -32,6 +32,10 @@ namespace Game.Systems.Player
 
             public bool AllowInventoryOpen;
             public bool AllowUIInteraction;
+
+            [Range(0 , 1)]
+            [Tooltip("0 - Free Look 1 - Center Locked")]
+            public float LookLimit;
         }
 
         public enum StateActive

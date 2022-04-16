@@ -14,6 +14,9 @@ namespace Game.Systems.Player
 
         public CursorInteractor cursorInteractor;
         public PlayerController controller;
+        
+        
+        
         private void Start()
         {
             if (currentState == null)
@@ -115,6 +118,7 @@ namespace Game.Systems.Player
             currentState.StateStart();
             currentState.ActiveState = PlayerState.StateActive.ACTIVE;
             controller.AllowUIClick = currentState.settings.AllowUIInteraction;
+            controller.cameraController.LimitLookRange = currentState.settings.LookLimit;
             
             SetupCursor(lastState,currentState);
         }

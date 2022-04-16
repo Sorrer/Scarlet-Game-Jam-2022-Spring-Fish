@@ -12,6 +12,7 @@ public class ProgressionElement : MonoBehaviour
     }
     
     public GameObject StumpModel;
+    public GameObject BurntStump;
     public GameObject BurntModel;
     public GameObject DefaultModel;
     public GameObject FlorishModel;

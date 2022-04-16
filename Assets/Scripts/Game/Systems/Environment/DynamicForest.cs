@@ -26,10 +26,20 @@ namespace Game.Systems.Environment
             }
         }
 
-        public void Set(ProgressionElement.ProgressionStage stage, ProgressionElement.ProgressionStage lastStage,
-            float emersion)
+        public struct ProgressionEmersion
         {
-            //Set all stages to either stage or last stage with emersion (0-1) being how many of last stage to include in new stage
+            public float EmersionRate;
+            public ProgressionElement.ProgressionStage stage;
+        }
+        
+        public void Set(List<ProgressionEmersion> progression)
+        {
+            float total = 0;
+
+            for (int i = 0; i < progression.Count; i++)
+            {
+                total += progression[i].EmersionRate;
+            }
         }
     }
 }

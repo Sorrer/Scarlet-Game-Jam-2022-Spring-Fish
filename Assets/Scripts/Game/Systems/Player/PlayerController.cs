@@ -29,6 +29,7 @@ namespace Game.Systems.Player
         public bool AllowUIClick = true;
 
         public bool HoveringOverUI;
+
         
         protected override void Start()
         {

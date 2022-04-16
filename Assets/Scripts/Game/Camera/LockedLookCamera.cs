@@ -14,6 +14,8 @@ public class LockedLookCamera : MonoBehaviour
     public Vector3 StartAngle;
 
     public PlayerCursorData data;
+    [Range(0,1)]
+    public float LimitLookRange;
     
     // Start is called before the first frame update
     void Start()
@@ -90,6 +92,6 @@ public class LockedLookCamera : MonoBehaviour
         Vector2 mouseCenterVec = mousePos - center;
         
 
-        return new Vector2(mouseCenterVec.y / center.y, mouseCenterVec.x / center.x );
+        return new Vector2(mouseCenterVec.y / center.y, mouseCenterVec.x / center.x ) * (1 - LimitLookRange);
     }
 }
