@@ -68,6 +68,7 @@ namespace Game.Systems.CursorInteractable
             {
                 if (lastInteractable != null)
                 {
+                    OnDeselectEvent?.Invoke(lastInteractable);
                     lastInteractable.OnDeselect();
                     lastInteractable = null;
                 }

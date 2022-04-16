@@ -4,9 +4,11 @@ using UnityEngine;
 
 namespace Game.Systems.Inventory.Progression
 {
+    [CreateAssetMenu(fileName = "Fish feeding list", menuName = "Game/Fish Feeding List")]
     public class FishFeedingList : ScriptableObject
     {
-        public class ItemsOrderNode
+        [Serializable]
+        public struct ItemsOrderNode
         {
             public InventoryItem item;
             public bool GoBackToIndex;

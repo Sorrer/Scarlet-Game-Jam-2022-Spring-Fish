@@ -9,7 +9,8 @@ namespace Game.Systems.Player.States
         
         public override void StateStart()
         {
-            
+            //If held item is feed, allow selection for that + pickup
+            //If held item is building, allow selection for that + pickup
         }
 
         public override void OnSelect(IInteractable interacted)

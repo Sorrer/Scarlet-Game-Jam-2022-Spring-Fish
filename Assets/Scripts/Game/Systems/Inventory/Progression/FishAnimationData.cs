@@ -24,7 +24,14 @@ namespace Game.Systems.Inventory.Progression
         public Vector3 Velocity;
 
         public float MaxSpeed;
-        
+
+        public float Dampening;
+
+        private void Start()
+        {
+            StartFish();
+        }
+
         public void StartFish()
         {
             this.transform.position = positions[0];
@@ -44,6 +51,7 @@ namespace Game.Systems.Inventory.Progression
             
             Velocity = Vector3.ClampMagnitude(Velocity, MaxSpeed);
 
+            Velocity -= Velocity * Dampening * Time.deltaTime;
 
             this.transform.position += Velocity * Time.deltaTime;
 
@@ -51,8 +59,8 @@ namespace Game.Systems.Inventory.Progression
             {
                 currentLocation++;
             }
-
-            if (currentLocation > positions.Count)
+            
+            if (currentLocation > positions.Count - 1)
             {
                 IsFinished = true;
             }
