@@ -10,6 +10,7 @@ namespace Game.Systems.Player.States
 
         public PlayableDirector playableDirector;
         public GameObject titleScreen;
+        public DayNightSettings dayNightSettings;
         
         private bool _startGame = false;
         private float curTime;
@@ -52,6 +53,8 @@ namespace Game.Systems.Player.States
 
         public override void StateStop()
         {
+            dayNightSettings.CurrentDay = 0;
+            dayNightSettings.TimeOfDayIndex = -1;
             titleScreen.SetActive(false);
         }
     }

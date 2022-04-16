@@ -17,5 +17,7 @@ namespace Game.Systems.Inventory
         {
             return name.GetHashCode();
         }
+        
+        
     }
 }

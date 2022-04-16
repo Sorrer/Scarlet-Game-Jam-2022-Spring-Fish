@@ -93,7 +93,7 @@ namespace Game.Systems.Player
             
         }
 
-        private void SetState(PlayerStateTypes type, bool ignoreLastState = false)
+        public void SetState(PlayerStateTypes type, bool ignoreLastState = false)
         {
             
             var lastState = currentState;
