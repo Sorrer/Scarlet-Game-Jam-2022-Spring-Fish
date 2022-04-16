@@ -27,7 +27,11 @@ namespace Game.Systems.Inventory.Progression
         public List<FishFeedingList> fishFeedingLists = new List<FishFeedingList>();
         public InventorySO inventory;
         public bool IsRunning { get; private set;  }
-        
+
+        public void FeedFish()
+        {
+            FeedFish(inventory.HeldItem);
+        }
         public void FeedFish(InventoryItem item)
         {
             if (IsRunning)
@@ -59,6 +63,7 @@ namespace Game.Systems.Inventory.Progression
 
                 if (firstItemNode.item == returnItem.item)
                 {
+                    Debug.Log("Already has item, not spawning");
                     StartFeedingAnimation(null, list);
                     return;
                 }
@@ -71,15 +76,15 @@ namespace Game.Systems.Inventory.Progression
         public void StartFeedingAnimation(InventoryItem returnItem, FishFeedingList list)
         {
 
+            Debug.Log($"Spawning fish + food + return item {list.FishPrefab} {list.FeedItem.name} {returnItem.name}");
             StartCoroutine(DoFeedingAnimation(returnItem, list));
         }
 
         private InventoryItem spawnThisItem;
         public IEnumerator DoFeedingAnimation(InventoryItem returnItem, FishFeedingList list)
         {
-
             var feed = Instantiate(list.FeedItem.Prefab, feedSpawnLoc);
-
+            
             yield return new WaitForSeconds(timeToActivateFishy);
 
             fishAnimator.StartFish(list.FishPrefab);
@@ -93,14 +98,23 @@ namespace Game.Systems.Inventory.Progression
             spawnThisItem = returnItem;
             transitionState.OnBlinkHold.AddListener(FinishFeeding);
             
+            Destroy(feed);
             stateManager.SetState(PlayerStateTypes.TRANSITION);
         }
 
         public void FinishFeeding()
         {
-            data.currentSpawnedItem = Instantiate(spawnThisItem.Prefab, itemSpawnLoc);
+            //If there is no item to spawn do not spawn
+            // TODO: ADD NO ITEMS SPAWNED EFFECT
+            //
+            
+            var go =Instantiate(spawnThisItem.Prefab, itemSpawnLoc);
+            go.transform.position = itemSpawnLoc.position;
+            
             IsRunning = false;
             transitionState.OnBlinkHold.RemoveListener(FinishFeeding);
+            
+            Debug.Log("Finished feeding " + spawnThisItem);
         }
 
 
@@ -137,16 +151,19 @@ namespace Game.Systems.Inventory.Progression
                     index = 0;
                 }
             }
-
-
-            if (list[index].GoBackToIndex)
-            {
-                index = list[index].GoBackIndex;
-            }
             else
             {
-                index++;
+
+                if (list[index].GoBackToIndex)
+                {
+                    index = list[index].GoBackIndex;
+                }
+                else
+                {
+                    index++;
+                }
             }
+
             
             
             return list[index];

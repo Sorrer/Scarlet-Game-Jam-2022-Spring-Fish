@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a06401e2d34a0cb9d51d0ff6ae3526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemReference: {fileID: 0}
+  itemReference: {fileID: 11400000, guid: 14bb3db4ff15a5a4a9c8eb3c18a59525, type: 2}
   root: {fileID: 8264830089511144148}
   modelObject: {fileID: 9111902433531073799}
   inventory: {fileID: 11400000, guid: ddf9c7c3cd5d0b8439ff7df54093adec, type: 2}
