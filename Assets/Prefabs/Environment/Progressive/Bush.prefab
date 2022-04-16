@@ -277,6 +277,7 @@ MonoBehaviour:
   BurntModel: {fileID: 8173591366445845976}
   DefaultModel: {fileID: 8173591365302052202}
   FlorishModel: {fileID: 8173591367153255273}
+  ScaleVariance: 0.2
 --- !u!1001 &9056466013353393720
 PrefabInstance:
   m_ObjectHideFlags: 0

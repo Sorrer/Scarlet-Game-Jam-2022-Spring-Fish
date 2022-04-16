@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Game.Systems.Environment;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ProgressionElement : MonoBehaviour
 {
@@ -18,9 +19,18 @@ public class ProgressionElement : MonoBehaviour
     public GameObject FlorishModel;
 
 
+    public float ScaleVariance;
+
     private void Start()
     {
         DynamicForest.instance.elements.Add(this);
+        Random.InitState(this.transform.position.GetHashCode());
+        
+        var scale = this.transform.localScale;
+        scale = scale.normalized * (scale.magnitude + (scale.magnitude * ((Random.value * ScaleVariance) - ScaleVariance / 2)));
+        var eulerAngles = this.transform.eulerAngles;
+        eulerAngles.y = Random.value * 360;
+        this.transform.eulerAngles = eulerAngles;
     }
 
     private void OnDestroy()

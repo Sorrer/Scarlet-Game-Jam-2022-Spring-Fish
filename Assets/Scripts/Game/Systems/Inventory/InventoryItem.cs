@@ -25,7 +25,11 @@ namespace Game.Systems.Inventory
             return $"{name} - {Tooltip}";
 
         }
-
+    
+        [Header("Building Settings")]
         public List<DynamicForest.ProgressionEmersion> forestSettings = new List<DynamicForest.ProgressionEmersion>();
+        // TODO Create an asset for events and it will call it
+        public bool IsEndGame;
+        
     }
 }

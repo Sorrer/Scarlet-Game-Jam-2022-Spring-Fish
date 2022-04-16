@@ -53,6 +53,7 @@ MonoBehaviour:
   BurntModel: {fileID: 6398491418060759873}
   DefaultModel: {fileID: 6398491417242410716}
   FlorishModel: {fileID: 6398491418574220341}
+  ScaleVariance: 0.1
 --- !u!1001 &6056615660120527204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1283,6 +1284,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 65db10af52040604d9fe9fc93dc7a255, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 23abb13c95df92645a775dabc1262f24, type: 2}
     - target: {fileID: -4587302668392987624, guid: 65db10af52040604d9fe9fc93dc7a255, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
