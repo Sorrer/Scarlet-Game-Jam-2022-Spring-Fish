@@ -15,6 +15,7 @@ namespace Game.Systems.Player.States
         public float BlinkTime;
         public float HoldBlinkTime;
 
+        public DayNightManager dayNightManager;
         public CursorInteractor interactor;
 
         public UnityEvent OnBlinkHold;
@@ -70,6 +71,7 @@ namespace Game.Systems.Player.States
                 if (lastCurBlinkTime < BlinkTime)
                 {
                      OnBlinkHold?.Invoke();
+                     dayNightManager.Progress();
                 }
                 
             }else

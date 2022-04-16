@@ -49,7 +49,6 @@ namespace Game.Systems.Inventory.Progression
 
 
 
-            bool repeated = false;
             FishFeedingList.ItemsOrderNode returnItem = NextItem(list);
 
             var firstItemNode = returnItem;
@@ -58,7 +57,7 @@ namespace Game.Systems.Inventory.Progression
             {
                 returnItem = NextItem(list);
 
-                if (firstItemNode == returnItem)
+                if (firstItemNode.item == returnItem.item)
                 {
                     StartFeedingAnimation(null, list);
                     return;
@@ -101,6 +100,7 @@ namespace Game.Systems.Inventory.Progression
         {
             data.currentSpawnedItem = Instantiate(spawnThisItem.Prefab, itemSpawnLoc);
             IsRunning = false;
+            transitionState.OnBlinkHold.RemoveListener(FinishFeeding);
         }
 
 

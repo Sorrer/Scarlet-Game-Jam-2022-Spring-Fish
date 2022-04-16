@@ -46,7 +46,7 @@ namespace Game.Systems.Player.States
                 }
                 else
                 {
-                    Finish(PlayerStateTypes.LOOK);
+                    Finish(PlayerStateTypes.INTERACT);
                 }
             }
         }
