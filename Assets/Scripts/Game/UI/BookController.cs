@@ -35,6 +35,10 @@ namespace Game.UI.Book
         private AudioSource flipPageAudioSource;
         [SerializeField]
         private GameObject emptyPageContent;
+        [SerializeField]
+        private AudioSource showBookAudio;
+        [SerializeField]
+        private AudioSource hideBookAudio;
 
         [Header("Settings")]
         [SerializeField]
@@ -54,10 +58,26 @@ namespace Game.UI.Book
 
         private Coroutine flipCoroutine;
 
+        private ChapterController currentChapter;
+
         public void Awake()
         {
             if (pageContentList.Count > 0)
                 LoadPageContents(pageContentList.ToArray());
+            // TODO: Remove this.. Only for testing rn
+            ShowBook();
+        }
+
+        public void ShowBook()
+        {
+            animator.Play("Show Book");
+            showBookAudio.Play();
+        }
+        
+        public void HideBook()
+        {
+            animator.Play("Hide Book");
+            hideBookAudio.Play();
         }
 
         public void LoadPageContents(IEnumerable<GameObject> newPageContentList)
@@ -76,7 +96,12 @@ namespace Game.UI.Book
 
         public void LoadChapter(ChapterController chapter)
         {
+            if (currentChapter != null)
+                currentChapter.Unload();
+            chapter.Preload();
             LoadPageContents(chapter.PageContentList);
+            chapter.Load();
+            currentChapter = chapter;
         }
 
         public void ResetBook()
