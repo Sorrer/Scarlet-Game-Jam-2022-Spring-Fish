@@ -8,7 +8,7 @@ namespace Game.Systems.Player
 
     public enum PlayerStateTypes
     {
-        DEFAULT, FEED, BUILD, PICK_UP, INVENTORY, TRANSITION, NOTHING, LOOK, TITLE
+        DEFAULT, INVENTORY, TRANSITION, NOTHING, LOOK, TITLE, INTERACT
     }
     
     public abstract class PlayerState : MonoBehaviour
@@ -31,7 +31,11 @@ namespace Game.Systems.Player
             public PlayerInteractionSettings interactionSettings;
 
             public bool AllowInventoryOpen;
+            public bool AllowUIInteraction;
 
+            [Range(0 , 1)]
+            [Tooltip("0 - Free Look 1 - Center Locked")]
+            public float LookLimit;
         }
 
         public enum StateActive

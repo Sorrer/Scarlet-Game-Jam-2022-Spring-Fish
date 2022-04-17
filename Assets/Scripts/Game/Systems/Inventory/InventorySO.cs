@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,7 +16,14 @@ namespace Game.Systems.Inventory
     {
         //Only one of each item
         private HashSet<InventoryItem> items = new HashSet<InventoryItem>();
-    
+
+        private void Awake()
+        {
+            items.Clear();
+            
+        }
+
+        public InventoryItem HeldItem;
     
         public List<InventoryItem> GetAllitems()
         {
@@ -42,7 +50,7 @@ namespace Game.Systems.Inventory
         {
             if (items.Contains(item))
             {
-                Debug.LogError("Item already exists, can not add. Check first");
+                Debug.LogWarning("Item already exists, can not add. Check first");
                 return;
             }
             

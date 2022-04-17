@@ -17,5 +17,6 @@ MonoBehaviour:
   InteractionLayer:
     serializedVersion: 2
     m_Bits: 0
-  cursorGraphicType: 3
+  AutoChangeCursor: 1
+  cursorGraphicType: 8
   OnInteractType: 3

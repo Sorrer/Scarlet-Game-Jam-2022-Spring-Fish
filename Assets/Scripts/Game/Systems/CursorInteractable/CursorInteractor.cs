@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Game.Systems.Player;
 using UnityEngine;
 
@@ -9,8 +10,9 @@ namespace Game.Systems.CursorInteractable
         public PlayerCursorData data;
         public Camera mainCamera;    
     
-        public LayerMask layerMask;
 
+        public List<LayerMask> layerOrder = new List<LayerMask>();
+        
         public delegate void OnInteract(IInteractable interactable);
 
         private OnInteract singleInteractEvent;
@@ -20,12 +22,27 @@ namespace Game.Systems.CursorInteractable
         
 
         private IInteractable lastInteractable;
+        
+        
     
         public bool HasSelected => lastInteractable != null;
 
         
         
         void Update()
+        {
+            for (int i = 0; i < layerOrder.Count; i++)
+            {
+                if (UpdateSelect(layerOrder[i]))
+                {
+                    break;
+                }
+            }
+            
+
+        }
+
+        public bool UpdateSelect(LayerMask layerMask)
         {
             if (Physics.Raycast(mainCamera.ScreenPointToRay(data.position), out var hit, Mathf.Infinity, layerMask))
             {
@@ -62,20 +79,20 @@ namespace Game.Systems.CursorInteractable
 
                 }
 
-
+                return true;
             }
             else
             {
                 if (lastInteractable != null)
                 {
+                    OnDeselectEvent?.Invoke(lastInteractable);
                     lastInteractable.OnDeselect();
                     lastInteractable = null;
                 }
             }
 
+            return false;
         }
-
-        
         
 
         /// <summary>
@@ -86,7 +103,7 @@ namespace Game.Systems.CursorInteractable
         public void Activate(LayerMask interactionLayer, OnInteract callbackInteract = null)
         {
             singleInteractEvent = callbackInteract;
-            layerMask = interactionLayer;
+            //layerMask = interactionLayer;
             enabled = true;
         }
 

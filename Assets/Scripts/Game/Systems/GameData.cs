@@ -11,7 +11,8 @@ namespace Game.Systems
         //Sanity meter depending on action
         private int PondGrade;
         private int SanityMeter; //Only goes positive
-    
+
+        public GameObject currentSpawnedItem;
         public delegate void OnValueChange (int amount);
 
         public static OnValueChange PondGradeChange;
