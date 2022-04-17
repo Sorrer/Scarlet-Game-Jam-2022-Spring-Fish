@@ -18,6 +18,9 @@ public class BuildingVisuals : MonoBehaviour
     [SerializeField] ParticleSystem particles;
     // Camera shake effect left off for now...
     bool isVisible;
+    BoxCollider collider;
+    Vector3 particleCenter;
+    float colliderBottom, colliderSize;
 
     public void Awake() {
         defaultDup = (GameObject) Instantiate(defaultObj);
@@ -27,6 +30,8 @@ public class BuildingVisuals : MonoBehaviour
         
         defaultDup.SetActive(false);
         isVisible = true;
+
+        collider = this.gameObject.GetComponent<BoxCollider>();
     }
 
     public void visualsControl(EffectSelect effect) {
@@ -52,7 +57,9 @@ public class BuildingVisuals : MonoBehaviour
     }
 
     void Update() {
+        #if UNITY_EDITOR
         testFX();
+        #endif
     }
 
     private void assignMaterial(GameObject obj, Material material) {
@@ -63,8 +70,16 @@ public class BuildingVisuals : MonoBehaviour
 
         if (obj == null) return;
 
-        if(obj.GetComponent<MeshRenderer>() != null) {
-            obj.GetComponent<MeshRenderer>().material = material;
+        var renderer = obj.GetComponent<MeshRenderer>();
+        if(renderer != null) {
+            renderer.material = material;
+            
+            var materials = renderer.materials;
+
+            for (int i = 0; i < renderer.materials.Length; i++) {
+                materials[i] = material;
+            }
+            renderer.materials = materials;
         }
 
         foreach(Transform child in obj.transform) {
@@ -95,6 +110,12 @@ public class BuildingVisuals : MonoBehaviour
     }
 
     public void setDown(GameObject obj) {
+        particleCenter = collider.bounds.center;
+        colliderBottom = collider.bounds.center.y - collider.bounds.size.y;
+        particleCenter.y = colliderBottom;
+
+        colliderSize = collider.bounds.size.x;
+
         Instantiate(particles, obj.transform.position, Quaternion.identity);
     }
 
