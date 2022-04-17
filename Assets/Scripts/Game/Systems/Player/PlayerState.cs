@@ -8,7 +8,7 @@ namespace Game.Systems.Player
 
     public enum PlayerStateTypes
     {
-        DEFAULT, INVENTORY, TRANSITION, NOTHING, LOOK, TITLE, INTERACT
+        DEFAULT, INVENTORY, TRANSITION, NOTHING, LOOK, TITLE, INTERACT, LOOK_LOCKED
     }
     
     public abstract class PlayerState : MonoBehaviour

@@ -31,18 +31,22 @@ namespace Game.Systems.Inventory
         {
             [Tooltip("If null, uses default")]
             public List<DynamicForest.ProgressionEmersion> forestSettings;
+            [Range(0.0f,1.0f)]
+            public float Density;
             // TODO Create an asset for events and it will call it
             public bool IsEndGame;
+            public int EndGameCinematicIndex;
+            
             [Tooltip("If null, uses default")]
             public Material waterMaterial;
             [Tooltip("If null, uses default")]
             public Material groundMaterial;
-
+            
             public int SetPoundState;
 
-            public void Apply(Renderer water, Renderer ground, EnvironmentState pondState)
+            public void Apply(Renderer water, Renderer ground, EnvironmentState pondState, DynamicForest forest)
             {
-                
+                forest.Set(forestSettings, Density);
                 
                 if (waterMaterial != null) water.material = waterMaterial;
                 if (groundMaterial != null) ground.material = groundMaterial;

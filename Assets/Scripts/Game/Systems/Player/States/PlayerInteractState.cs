@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Game.Systems.Buildings;
 using Game.Systems.CursorInteractable;
 using Game.Systems.Environment;
 using Game.Systems.Inventory;
@@ -17,8 +18,7 @@ namespace Game.Systems.Player.States
         public Camera feedCamera;
         public Camera buildCamera;
 
-        public List<LayerMask> feedLayerOrder;
-        public List<LayerMask> defaultLayerOrder;
+        public BuildingList buildingList;
 
         public GameObject objectToPickup;
         
@@ -27,7 +27,11 @@ namespace Game.Systems.Player.States
         public Renderer Water, Ground;
         public Material DefaultWater, DefaultGround;
         public EnvironmentState PondEnvironmentState;
-        
+
+        public PlayerTransitionState transitionState;
+        public CinematicEndings endings;
+
+        public DynamicForest forest;
         public override void StateStart()
         {
             //If held item is feed, allow selection for that + pickup
@@ -45,6 +49,7 @@ namespace Game.Systems.Player.States
                     case ItemCategories.Buildings:
                         buildCamera.enabled = true;
                         // TODO: Enable specific building that needs to be activated, have a general list for it and find the inventory item that matches;
+                        buildingList.Activate(feed.inventory.HeldItem);
                         break;
                     case ItemCategories.Food:
                         feedCamera.enabled = true;
@@ -114,22 +119,24 @@ namespace Game.Systems.Player.States
             }else if (interacted.GetInteractType() == InteractType.Build &&
                       heldItem.Category == ItemCategories.Buildings)
             {
-                // TODO
-                // Do the building stuff
-
-                Water.material = DefaultWater;
-                Ground.material = DefaultGround;
-
-                var settings = heldItem.buildingSettings;
-                
-                settings.Apply(Water, Ground, PondEnvironmentState);
-
-                if (heldItem.buildingSettings.IsEndGame)
+                transitionState.OnceOnBlink += () =>
                 {
-                    // Do end game stuff required by this, IDK to be determined
-                    Finish(PlayerStateTypes.LOOK);
-                    return;
-                }
+                    Water.material = DefaultWater;
+                    Ground.material = DefaultGround;
+
+                    var settings = heldItem.buildingSettings;
+                
+                    settings.Apply(Water, Ground, PondEnvironmentState, forest);
+
+                    buildingList.Place(heldItem);
+                    
+                    if (heldItem.buildingSettings.IsEndGame)
+                    {
+                        endings.Play(heldItem.buildingSettings.EndGameCinematicIndex);
+                        transitionState.settings.NextState = PlayerStateTypes.LOOK_LOCKED; // ONE TIME DEAL, THIS CODE ONLY WORKS ONE TIME!
+                    }
+                };
+                
                 
                 feed.inventory.HeldItem = null;
                 Finish(PlayerStateTypes.INTERACT);
@@ -147,6 +154,7 @@ namespace Game.Systems.Player.States
 
         public override void StateStop()
         {
+            buildingList.DeactivateAll();
             feedCamera.enabled = false;
             buildCamera.enabled = false;
         }
