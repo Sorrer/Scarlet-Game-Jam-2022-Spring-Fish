@@ -14,6 +14,8 @@ public class BuildingVisuals : MonoBehaviour
     }
     public Material blueTranslucent, greenTranslucent, highlight;
     public ParticleSystem particles;
+    // Camera shake effect left off for now...
+
     public void visualsControl(EffectSelect effect) {
         switch (effect) {
             case EffectSelect.Activate:
@@ -30,8 +32,13 @@ public class BuildingVisuals : MonoBehaviour
                 break;
             case EffectSelect.Finish:
                 // Leave default object materials
+                setDown(this.gameObject);
                 break;
         }
+    }
+
+    void Update() {
+        testSetDown();
     }
 
     private void assignMaterial(GameObject obj, Material material) {
@@ -41,6 +48,17 @@ public class BuildingVisuals : MonoBehaviour
 
         foreach(Transform child in obj.transform) {
             assignMaterial(child.gameObject, material);
+        }
+    }
+
+    public void setDown(GameObject obj) {
+        Instantiate(particles, obj.transform.position, Quaternion.identity);
+    }
+
+    public void testSetDown() {
+        if (Input.GetKeyDown(KeyCode.O)) {
+            Debug.Log("Yuh partcles");
+            setDown(this.gameObject);
         }
     }
 }
