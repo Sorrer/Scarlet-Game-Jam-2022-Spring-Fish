@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0057bab7b56da974f89b16af30c9e6f5, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: 
+  preloadItems:
+  - {fileID: 11400000, guid: 33c1c22a295d645498c1347b06987c1f, type: 2}
+  - {fileID: 11400000, guid: 26442597815b33544b74fe1a0a0de623, type: 2}
+  - {fileID: 11400000, guid: 4388292673c7cb5488bbe6ffeef86525, type: 2}
   HeldItem: {fileID: 11400000, guid: 33c1c22a295d645498c1347b06987c1f, type: 2}

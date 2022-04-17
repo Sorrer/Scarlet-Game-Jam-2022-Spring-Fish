@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 748362137998344203}
   - component: {fileID: 6814882445530574539}
+  - component: {fileID: 7637053370007541396}
   m_Layer: 5
   m_Name: Inventory Page
   m_TagString: Untagged
@@ -102,6 +103,19 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &7637053370007541396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5144686423854029278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6d7872669d5d8f418dd24b28ead7288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 2462617218400691498, guid: e9d5ef427ce54d449a1046233a63eef1, type: 3}
 --- !u!1001 &459809021313311229
 PrefabInstance:
   m_ObjectHideFlags: 0

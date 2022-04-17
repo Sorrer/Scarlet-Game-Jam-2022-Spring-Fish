@@ -62,7 +62,7 @@ namespace Game.Systems.Inventory
             if (result == null)
                 return false;
             output = result;
-            return false;
+            return true;
         }
 
         public InventoryItem Craft(IEnumerable<InventoryItem> inputs)
