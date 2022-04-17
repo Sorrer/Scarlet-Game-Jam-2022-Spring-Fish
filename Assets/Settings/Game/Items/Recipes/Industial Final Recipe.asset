@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Industial Final Recipe
   m_EditorClassIdentifier: 
   Inputs:
-  - {fileID: 0}
-  - {fileID: 0}
-  Output: {fileID: 0}
+  - {fileID: 11400000, guid: ad661c371dd677a4f87e045f8bfec20c, type: 2}
+  - {fileID: 11400000, guid: 8b27c4512e886b04d8e3401043084b2d, type: 2}
+  Output: {fileID: 11400000, guid: ffb77e1e470a78145b84a29b5d612ddc, type: 2}

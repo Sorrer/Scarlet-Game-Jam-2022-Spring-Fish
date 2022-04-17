@@ -12,19 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211a4b7dc1ad48e9b81b43b877b5a91b, type: 3}
   m_Name: Factory
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: d2eba4b578e0a254f8d64698fc3f99cc, type: 3}
   Prefab: {fileID: 0}
   Category: 0
-  Name: 
-  Tooltip: 
+  Name: Factory
+  Tooltip: Its about to get a little dirty
   prefabScale: {x: 0, y: 0, z: 0}
   prefabRotation: {x: 0, y: 0, z: 0}
   buildingSettings:
-    forestSettings: []
-    Density: 0
+    forestSettings:
+    - SpawnWeight: 5
+      stage: 2
+    - SpawnWeight: 5
+      stage: 1
+    - SpawnWeight: 60
+      stage: 4
+    Density: 0.7
     IsEndGame: 0
     EndGameCinematicIndex: 0
-    waterMaterial: {fileID: 0}
-    groundMaterial: {fileID: 0}
-    FishFoodProduced: {fileID: 0}
+    waterMaterial: {fileID: 2100000, guid: aefe22958a9158947b7b78be7719796f, type: 2}
+    groundMaterial: {fileID: 2100000, guid: 26784b8b61508f043ada55bb6f32f30e, type: 2}
+    FishFoodProduced: {fileID: 11400000, guid: 03d802b464493ec499e78ef91df8209d, type: 2}
     SetPoundState: 0

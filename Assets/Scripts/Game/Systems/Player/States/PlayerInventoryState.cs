@@ -1,5 +1,7 @@
 ﻿using Game.Systems.CursorInteractable;
 using Game.Systems.Inventory;
+using Game.UI;
+using Game.UI.Book;
 using UnityEngine;
 
 namespace Game.Systems.Player.States
@@ -12,12 +14,14 @@ namespace Game.Systems.Player.States
 
         public PlayerController controller;
 
+        public BookController bookController;
+        
         public Vector3 lastMousePos;
         
         public override void StateStart()
         {
             lastMousePos = cursor.position;
-            InventoryRoot.SetActive(true);
+            bookController.ShowBook();
             cursor.cursorGraphicType = PlayerCursorData.CursorGraphicType.DEFAULT;
         }
 
@@ -63,6 +67,7 @@ namespace Game.Systems.Player.States
 
         public override void StateStop()
         { 
+            bookController.HideBook();
             cursor.position = lastMousePos;
             InventoryRoot.SetActive(false);
         }

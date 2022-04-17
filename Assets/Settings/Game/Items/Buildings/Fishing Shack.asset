@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211a4b7dc1ad48e9b81b43b877b5a91b, type: 3}
   m_Name: Fishing Shack
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: a2abe8a8d36eb2644b02ee36e6b19052, type: 3}
   Prefab: {fileID: 0}
   Category: 0
   Name: 
@@ -25,6 +25,6 @@ MonoBehaviour:
     IsEndGame: 0
     EndGameCinematicIndex: 0
     waterMaterial: {fileID: 0}
-    groundMaterial: {fileID: 0}
+    groundMaterial: {fileID: 2100000, guid: 7274e2c7437237448bf53b8e1ea933ec, type: 2}
     FishFoodProduced: {fileID: 0}
     SetPoundState: 0

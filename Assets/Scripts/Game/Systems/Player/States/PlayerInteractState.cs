@@ -140,9 +140,9 @@ namespace Game.Systems.Player.States
                         transitionState.settings.NextState = PlayerStateTypes.LOOK_LOCKED; // ONE TIME DEAL, THIS CODE ONLY WORKS ONE TIME!
                     }
                 };
-                
-                
+
                 feed.inventory.HeldItem = null;
+                feed.inventory.RemoveItem(feed.inventory.HeldItem);
                 Finish(PlayerStateTypes.INTERACT);
             }
 

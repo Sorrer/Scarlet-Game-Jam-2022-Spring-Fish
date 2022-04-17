@@ -12,19 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211a4b7dc1ad48e9b81b43b877b5a91b, type: 3}
   m_Name: Composter
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 5f5f8a4df28ecb441869668e621e23ea, type: 3}
   Prefab: {fileID: 0}
   Category: 0
-  Name: 
-  Tooltip: 
+  Name: Composter
+  Tooltip: Substancenence.
   prefabScale: {x: 0, y: 0, z: 0}
   prefabRotation: {x: 0, y: 0, z: 0}
   buildingSettings:
-    forestSettings: []
-    Density: 0
+    forestSettings:
+    - SpawnWeight: 100
+      stage: 4
+    - SpawnWeight: 5
+      stage: 5
+    Density: 0.823
     IsEndGame: 0
     EndGameCinematicIndex: 0
     waterMaterial: {fileID: 0}
-    groundMaterial: {fileID: 0}
-    FishFoodProduced: {fileID: 0}
-    SetPoundState: 0
+    groundMaterial: {fileID: 2100000, guid: 61466679046f60d4997cd3aa192ebff2, type: 2}
+    FishFoodProduced: {fileID: 11400000, guid: af47455c098af7647acc0b611d6234ab, type: 2}
+    SetPoundState: 1

@@ -1,4 +1,5 @@
-﻿using Game.Systems.CursorInteractable;  
+﻿using Game.Systems.CursorInteractable;
+using Game.Systems.Inventory;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -10,6 +11,9 @@ namespace Game.Systems.Player.States
         public PlayableDirector playableDirector;
         public GameObject titleScreen;
         public DayNightSettings dayNightSettings;
+
+        public InventorySO inventory;
+        public InventoryItem startFood;
         
         private bool _startGame = false;
         private float curTime;
@@ -52,6 +56,7 @@ namespace Game.Systems.Player.States
 
         public override void StateStop()
         {
+            inventory.AddItem(startFood);
             dayNightSettings.CurrentDay = 0;
             dayNightSettings.TimeOfDayIndex = -1;
             titleScreen.SetActive(false);

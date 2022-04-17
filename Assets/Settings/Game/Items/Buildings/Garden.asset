@@ -12,19 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211a4b7dc1ad48e9b81b43b877b5a91b, type: 3}
   m_Name: Garden
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: ebf9740e19d477a48ab7d47852314376, type: 3}
   Prefab: {fileID: 0}
   Category: 0
-  Name: 
-  Tooltip: 
+  Name: Veggie Garden
+  Tooltip: Mmm this reminds me of a tale
   prefabScale: {x: 0, y: 0, z: 0}
   prefabRotation: {x: 0, y: 0, z: 0}
   buildingSettings:
-    forestSettings: []
-    Density: 0
+    forestSettings:
+    - SpawnWeight: 1
+      stage: 4
+    Density: 0.716
     IsEndGame: 0
     EndGameCinematicIndex: 0
     waterMaterial: {fileID: 0}
     groundMaterial: {fileID: 0}
-    FishFoodProduced: {fileID: 0}
-    SetPoundState: 0
+    FishFoodProduced: {fileID: 11400000, guid: df11c53dee4891f4fba12f230f805217, type: 2}
+    SetPoundState: 1

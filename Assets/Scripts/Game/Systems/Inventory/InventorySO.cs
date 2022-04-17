@@ -62,6 +62,8 @@ namespace Game.Systems.Inventory
 
         public void AddItem(InventoryItem item)
         {
+            if (item == null) return;
+            
             if (Items.Contains(item))
             {
                 Debug.LogWarning("Item already exists, can not add. Check first");
