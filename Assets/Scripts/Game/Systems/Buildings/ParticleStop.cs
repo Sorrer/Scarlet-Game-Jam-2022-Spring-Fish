@@ -9,9 +9,14 @@ public class ParticleStop : MonoBehaviour
     private IEnumerator coroutineDestroy;
     void Awake()
     {
+        this.gameObject.transform.Rotate(-90.0f, 0.0f, 0.0f, Space.Self);
         // Destroys particle system after 2 seconds
         coroutineDestroy = destroyParticles(particles);
         StartCoroutine(coroutineDestroy);
+    }
+
+    public void scaleParticles() {
+
     }
 
     private IEnumerator destroyParticles(ParticleSystem sys) {
