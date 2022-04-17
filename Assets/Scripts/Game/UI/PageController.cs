@@ -66,14 +66,14 @@ namespace Game.UI.Book
             }
             else
             {
-                pageContentAndDecorHolder.localScale = Vector2.one;
+                pageContentAndDecorHolder.localScale = Vector3.one;
                 pageContentAndDecorHolder.localPosition = Vector2.zero;
             }
 
             //contentOriginalParent = content.transform.parent;
             content.transform.SetParent(contentHolder, false);
             content.transform.localPosition = Vector2.zero;
-            content.transform.localScale = Vector2.one;
+            content.transform.localScale = Vector3.one;
             CanFlip = canFlip;
 
             bottomDecorImage.sprite = CanFlip ? bottomDecorFlippableSprite : bottomDecorSprite;

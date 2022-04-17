@@ -18,9 +18,15 @@ namespace Game.UI.Book
         [SerializeField]
         private GameObject itemPrefab;
         [SerializeField]
-        private GameObject consumeItemFXPrefab;
+        private ParticleSystem[] craftInputParticles;
         [SerializeField]
-        private GameObject createItemFXPrefab;
+        private ParticleSystem[] craftInputRemoveParticles;
+        [SerializeField]
+        private ParticleSystem craftOutputParticle;
+        [SerializeField]
+        private ParticleSystem craftOutputRemoveParticle;
+        [SerializeField]
+        private AudioSource craftAudio;
         [SerializeField]
         private InventorySO inventorySO;
         [SerializeField]
@@ -30,6 +36,26 @@ namespace Game.UI.Book
         {
             foreach (var ingredientSlot in inputSlots)
                 ingredientSlot.OnItemChanged.AddListener(TryCraft);
+        }
+
+        public void Unload()
+        {
+            int i = 0;
+            foreach (var inventorySlot in inputSlots)
+            {
+                if (inventorySlot.ItemController != null)
+                {
+                    //craftInputRemoveParticles[i].Play();
+                    Destroy(inventorySlot.ItemController.gameObject);
+                }
+                i++;
+            }
+
+            if (outputSlot.ItemController != null)
+            {
+                //craftOutputRemoveParticle.Play();
+                Destroy(outputSlot.ItemController.gameObject);
+            }
         }
 
         private void TryCraft()
@@ -45,14 +71,23 @@ namespace Game.UI.Book
 
             if (craftingList.TryCraft(inputItems, out InventoryItem outputItem))
             {
-                // We assume fx prefabs are one shot and clean up themselves
-                foreach (var inputSlot in inputSlots)
-                    Instantiate(consumeItemFXPrefab, inputSlot.transform.position, Quaternion.identity, inputSlot.transform);
+                for (int i = 0; i < inputSlots.Count; i++)
+                {
+                    var slot = inputSlots[i];
+                    if (slot.ItemController != null)
+                    {
+                        inventorySO.RemoveItem(slot.ItemController.ItemData);
+                        Destroy(slot.ItemController.gameObject);
+                        craftInputParticles[i].Play();
+                    }
+                }
+                craftOutputParticle.Play();
+                craftAudio.Play();
 
-                Instantiate(createItemFXPrefab, outputSlot.transform.position, Quaternion.identity, outputSlot.transform);
-
-                var outputItemInst = Instantiate(itemPrefab, outputSlot.transform.position, Quaternion.identity, outputSlot.transform).GetComponent<InventoryItemController>();
+                var outputItemInst = Instantiate(itemPrefab, outputSlot.transform.position, outputSlot.transform.rotation, outputSlot.transform).GetComponent<InventoryItemController>();
                 outputItemInst.Construct(outputItem);
+                outputSlot.ItemController = outputItemInst;
+                inventorySO.AddItem(outputItem);
             }
         }
     }

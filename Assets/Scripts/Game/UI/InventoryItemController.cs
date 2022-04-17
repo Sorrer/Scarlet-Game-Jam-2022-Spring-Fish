@@ -36,7 +36,7 @@ namespace Game.UI.Book
         public InventoryItem ItemData { get => itemData; set => itemData = value; }
 
         private Transform originalParent;
-        private Vector3 originalUIPosition;
+        private Vector3 originalLocalPos;
 
         private bool dragging;
         private Coroutine moveBackCoroutine;
@@ -119,7 +119,7 @@ namespace Game.UI.Book
                                     parentSlotController.ItemController = null;
                             }
                             originalParent = slotController.transform;
-                            originalUIPosition = UIManager.Instance.GlobalToUIPosition(slotController.transform.position);
+                            originalLocalPos = transform.parent.InverseTransformPoint(slotController.transform.position);
                             break;
                         }
                     }
@@ -143,9 +143,9 @@ namespace Game.UI.Book
                     StopCoroutine(moveBackCoroutine);
                 } else
                 {
-                    originalUIPosition = UIManager.Instance.GlobalToUIPosition(transform.position);
                     originalParent = transform.parent;
                     transform.SetParent(InventoryItemsManager.Instance.DragDropHolder);
+                    originalLocalPos = transform.localPosition;
                 }
                 time = 0;
 
@@ -161,11 +161,11 @@ namespace Game.UI.Book
             time = 0;
             while (time < moveBackDuration)
             {
-                transform.position = Vector3.Lerp(transform.position, UIManager.Instance.UIToGlobalPosition(originalUIPosition), moveBackCurve.Evaluate(time / moveBackDuration));
                 yield return new WaitForEndOfFrame();
+                transform.localPosition = Vector3.Lerp(transform.localPosition, originalLocalPos, moveBackCurve.Evaluate(time / moveBackDuration));
                 time += Time.deltaTime;
             }
-            transform.position = UIManager.Instance.UIToGlobalPosition(originalUIPosition);
+            transform.localPosition = originalLocalPos;
             transform.SetParent(originalParent, true);
             moveBackCoroutine = null;
         }

@@ -42,10 +42,5 @@ namespace Game.UI.Book
             SelectedTab = tab;
             SelectedTab.Selected = true;
         }
-
-        public void LoadChapter()
-        {
-            // TODO
-        }
     }
 }
