@@ -21,6 +21,7 @@ namespace Game.Systems.Inventory.Progression
         public GameData data;
         public PlayerTransitionState transitionState;
         public PlayerStateManager stateManager;
+        public PlayerInteractState interactState;
 
         public FishAnimator fishAnimator;
         
@@ -76,7 +77,7 @@ namespace Game.Systems.Inventory.Progression
         public void StartFeedingAnimation(InventoryItem returnItem, FishFeedingList list)
         {
 
-            Debug.Log($"Spawning fish + food + return item {list.FishPrefab} {list.FeedItem.name} {returnItem.name}");
+            Debug.Log($"Spawning fish + food + return item {list.FishPrefab} {list.FeedItem.name} {returnItem}");
             StartCoroutine(DoFeedingAnimation(returnItem, list));
         }
 
@@ -107,9 +108,14 @@ namespace Game.Systems.Inventory.Progression
             //If there is no item to spawn do not spawn
             // TODO: ADD NO ITEMS SPAWNED EFFECT
             //
-            
-            var go =Instantiate(spawnThisItem.Prefab, itemSpawnLoc);
-            go.transform.position = itemSpawnLoc.position;
+
+            if (spawnThisItem != null)
+            {
+                var go =Instantiate(spawnThisItem.Prefab, itemSpawnLoc);
+                go.transform.position = itemSpawnLoc.position;
+
+                interactState.objectToPickup = go;
+            }
             
             IsRunning = false;
             transitionState.OnBlinkHold.RemoveListener(FinishFeeding);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -34,7 +35,12 @@ namespace Game.Systems.Environment
             public ProgressionElement.ProgressionStage stage;
         }
         
-        public void Set(List<ProgressionEmersion> progression)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="progression"></param>
+        /// <param name="density">0 - 1</param>
+        public void Set(List<ProgressionEmersion> progression, float density)
         {                                                                                                                                                                             
             int total = 0;
                 
@@ -43,11 +49,28 @@ namespace Game.Systems.Environment
                 total += progression[i].SpawnWeight;
             }
 
-
+            int totalElements = elements.Count;
+            int totalElementsDisabled = (int) ((int) elements.Count * Mathf.Clamp(density, 0, 1));
             for (int i = 0; i < elements.Count; i++)
             {
+                
+                elements[i].gameObject.SetActive(true);
                 elements[i].SetProgressionStage(GetStage(progression, total));
             }
+
+            List<ProgressionElement> elementsCopy = elements.ToList();
+
+            while (elementsCopy.Count > 0 || totalElementsDisabled > 0)
+            {
+                int randomIndex = Random.Range(0, elementsCopy.Count);
+                
+                elementsCopy[randomIndex].gameObject.SetActive(false);
+                
+                totalElementsDisabled--;
+            }
+            
+
+
         }
 
         private ProgressionElement.ProgressionStage GetStage(List<ProgressionEmersion> progressions, int total)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Game.Systems.CursorInteractable;
+using Game.Systems.Environment;
 using Game.Systems.Inventory;
 using Game.Systems.Inventory.Progression;
 using UnityEngine;
@@ -22,6 +23,10 @@ namespace Game.Systems.Player.States
         public GameObject objectToPickup;
         
         public GameObject feedInteraction;
+
+        public Renderer Water, Ground;
+        public Material DefaultWater, DefaultGround;
+        public EnvironmentState PondEnvironmentState;
         
         public override void StateStart()
         {
@@ -88,9 +93,13 @@ namespace Game.Systems.Player.States
 
         public override void OnInteract(IInteractable interacted)
         {
-            if (interacted.GetInteractType() == InteractType.Feed && feed.inventory.HeldItem.Category == ItemCategories.Food)
+            if (feed.inventory.HeldItem == null) return;
+
+            var heldItem = feed.inventory.HeldItem;
+            
+            if (interacted.GetInteractType() == InteractType.Feed && heldItem.Category == ItemCategories.Food)
             {
-                if (feed.inventory.HeldItem != null && objectToPickup == null)
+                if (heldItem != null && objectToPickup == null)
                 {
                     //Do the feed stuff
                     feed.FeedFish();
@@ -103,10 +112,22 @@ namespace Game.Systems.Player.States
                 }
                 
             }else if (interacted.GetInteractType() == InteractType.Build &&
-                      feed.inventory.HeldItem.Category == ItemCategories.Buildings)
+                      heldItem.Category == ItemCategories.Buildings)
             {
                 // TODO
                 // Do the building stuff
+
+                Water.material = DefaultWater;
+                Ground.material = DefaultGround;
+
+                var settings = heldItem.buildingSettings;
+                
+                settings.Apply(Water, Ground, PondEnvironmentState);
+
+                if (heldItem.buildingSettings.IsEndGame)
+                {
+                    // Do end game stuff required by this, IDK to be determined
+                }
                 
                 feed.inventory.HeldItem = null;
                 Finish(PlayerStateTypes.INTERACT);

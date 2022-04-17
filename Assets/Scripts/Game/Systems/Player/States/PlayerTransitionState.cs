@@ -19,6 +19,14 @@ namespace Game.Systems.Player.States
         public CursorInteractor interactor;
 
         public UnityEvent OnBlinkHold;
+        public UnityEvent OnBlinkOpen;
+        public delegate void OnBlink();
+
+        /// <summary>
+        /// Is cleared after blink
+        /// </summary>
+        public OnBlink OnceOnBlink;
+        
         public Image blinkImage;
         
         private float curBlinkTime;
@@ -72,6 +80,8 @@ namespace Game.Systems.Player.States
                 {
                      OnBlinkHold?.Invoke();
                      dayNightManager.Progress();
+                     OnceOnBlink?.Invoke();
+                     OnceOnBlink = null;
                 }
                 
             }else

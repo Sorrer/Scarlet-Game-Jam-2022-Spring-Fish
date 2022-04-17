@@ -25,11 +25,33 @@ namespace Game.Systems.Inventory
             return $"{name} - {Tooltip}";
 
         }
-    
-        [Header("Building Settings")]
-        public List<DynamicForest.ProgressionEmersion> forestSettings = new List<DynamicForest.ProgressionEmersion>();
-        // TODO Create an asset for events and it will call it
-        public bool IsEndGame;
+
+        [Serializable]
+        public struct BuildingSettings
+        {
+            [Tooltip("If null, uses default")]
+            public List<DynamicForest.ProgressionEmersion> forestSettings;
+            // TODO Create an asset for events and it will call it
+            public bool IsEndGame;
+            [Tooltip("If null, uses default")]
+            public Material waterMaterial;
+            [Tooltip("If null, uses default")]
+            public Material groundMaterial;
+
+            public int SetPoundState;
+
+            public void Apply(Renderer water, Renderer ground, EnvironmentState pondState)
+            {
+                
+                
+                if (waterMaterial != null) water.material = waterMaterial;
+                if (groundMaterial != null) ground.material = groundMaterial;
+                
+                pondState.Activate(SetPoundState);
+            }
+        }
+        [Space(4)]
+        [Header("Building Settings")] public BuildingSettings buildingSettings;
         
     }
 }
