@@ -14,17 +14,17 @@ namespace Game.UI.Book
         [SerializeField]
         private List<InventoryItemSlotController> inputSlots;
         [SerializeField]
-        private InventoryItemSlotController outcomeSlot;
-        [SerializeField]
-        private List<CraftingRecipe> craftingRecipes;
+        private InventoryItemSlotController outputSlot;
         [SerializeField]
         private GameObject itemPrefab;
-        [SerializeField]
-        private InventorySO inventorySO;
         [SerializeField]
         private GameObject consumeItemFXPrefab;
         [SerializeField]
         private GameObject createItemFXPrefab;
+        [SerializeField]
+        private InventorySO inventorySO;
+        [SerializeField]
+        private CraftingList craftingList;
 
         private void Awake()
         {
@@ -35,7 +35,7 @@ namespace Game.UI.Book
         private void TryCraft()
         {
             // Cannot craft if there is an item in the way.
-            if (outcomeSlot.ItemController != null)
+            if (outputSlot.ItemController != null)
                 return;
 
             List<InventoryItem> inputItems = new List<InventoryItem>();
@@ -43,35 +43,16 @@ namespace Game.UI.Book
                 if (slot.ItemController != null)
                     inputItems.Add(slot.ItemController.ItemData);
 
-            foreach (var recipe in craftingRecipes)
+            if (craftingList.TryCraft(inputItems, out InventoryItem outputItem))
             {
-                // Definitely not craftable if we don't have the same input item count.
-                if (recipe.Inputs.Length != inputItems.Count)
-                    continue;
+                // We assume fx prefabs are one shot and clean up themselves
+                foreach (var inputSlot in inputSlots)
+                    Instantiate(consumeItemFXPrefab, inputSlot.transform.position, Quaternion.identity, inputSlot.transform);
 
-                var tempInputItems = new List<InventoryItem>(inputItems);
-                foreach (var input in recipe.Inputs)
-                    tempInputItems.Remove(input);
+                Instantiate(createItemFXPrefab, outputSlot.transform.position, Quaternion.identity, outputSlot.transform);
 
-                if (tempInputItems.Count == 0 && !inventorySO.HasItem(recipe.Output))
-                {
-                    // Crafting is successful, we've used up all the items in the recipe.
-                    // This item is also unique too -- otherwise we cannot craft it.
-                    var outcomeItemController = Instantiate(itemPrefab, outcomeSlot.transform).GetComponent<InventoryItemController>();
-                    outcomeSlot.ItemController = outcomeItemController;
-                    Instantiate(createItemFXPrefab, outcomeSlot.transform.position, Quaternion.identity, outcomeSlot.transform);
-
-                    inventorySO.AddItem(recipe.Output);
-
-                    foreach (var slot in inputSlots)
-                        if (slot.ItemController != null)
-                        {
-                            Instantiate(consumeItemFXPrefab, slot.transform.position, Quaternion.identity, slot.transform);
-                            Destroy(slot.ItemController);
-                            slot.ItemController = null;
-                        }
-                    break;
-                }
+                var outputItemInst = Instantiate(itemPrefab, outputSlot.transform.position, Quaternion.identity, outputSlot.transform).GetComponent<InventoryItemController>();
+                outputItemInst.Construct(outputItem);
             }
         }
     }

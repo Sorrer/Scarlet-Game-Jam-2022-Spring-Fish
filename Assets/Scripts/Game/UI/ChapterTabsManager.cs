@@ -22,7 +22,11 @@ namespace Game.UI.Book
                     OnTabClicked(tab); 
                 });
             }
+        }
 
+        private void Start()
+        {
+            // Note that ChapterControllers need to initalize themselves in Awake
             if (tabs.Count > 0)
             {
                 SelectedTab = tabs[0];
