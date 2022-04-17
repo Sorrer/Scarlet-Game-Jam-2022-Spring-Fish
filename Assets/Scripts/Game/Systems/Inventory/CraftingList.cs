@@ -18,10 +18,10 @@ namespace Game.Systems.Inventory
         private List<CraftingRecipe> recipes = new List<CraftingRecipe>();
         public List<CraftingRecipe> Recipes => recipes;
 
-        private HashSet<InventoryItem> allItems;
+        private HashSet<InventoryItem> allItems = new HashSet<InventoryItem>();
         public HashSet<InventoryItem> AllItems => allItems;
 
-        private Dictionary<InventoryItem, int> itemIndexes;
+        private Dictionary<InventoryItem, int> itemIndexes = new Dictionary<InventoryItem, int>();
 
         private int nextFreeItemIdx = 0;
 

@@ -36,12 +36,13 @@ namespace Game.UI.Book
         public InventoryItem ItemData { get => itemData; set => itemData = value; }
 
         private Transform originalParent;
-        private Vector2 originalPosition;
+        private Vector3 originalUIPosition;
 
         private bool dragging;
         private Coroutine moveBackCoroutine;
         private float time = 0;
         private bool hover;
+        private bool showingTooltip;
 
         public void Construct(InventoryItem newItemData)
         {
@@ -49,9 +50,9 @@ namespace Game.UI.Book
             image.sprite = newItemData.Icon;
         }
 
-        private Vector2 GetMousePos()
+        private Vector3 GetMousePos()
         {
-            return Input.mousePosition;
+            return UIManager.Instance.ScreenToWorldPoint(Input.mousePosition);
         }
 
         private void Awake()
@@ -71,7 +72,7 @@ namespace Game.UI.Book
             {
                 if (time < moveToMouseDuration)
                 {
-                    transform.position = Vector2.Lerp(transform.position, GetMousePos(), moveToMouseCurve.Evaluate(time / moveToMouseDuration));
+                    transform.position = Vector3.Lerp(transform.position, GetMousePos(), moveToMouseCurve.Evaluate(time / moveToMouseDuration));
                     time += Time.deltaTime;
                 } else 
                 {
@@ -85,6 +86,13 @@ namespace Game.UI.Book
             if (eventData.button == PointerEventData.InputButton.Left)
             {
                 dragging = false;
+
+                
+                if (showingTooltip)
+                {
+                    showingTooltip = false;
+                    InventoryItemsManager.Instance.ClearTooltip();
+                }
 
                 PointerEventData pointerData = new PointerEventData(EventSystem.current)
                 {
@@ -111,7 +119,7 @@ namespace Game.UI.Book
                                     parentSlotController.ItemController = null;
                             }
                             originalParent = slotController.transform;
-                            originalPosition = slotController.transform.position;
+                            originalUIPosition = UIManager.Instance.GlobalToUIPosition(slotController.transform.position);
                             break;
                         }
                     }
@@ -135,7 +143,7 @@ namespace Game.UI.Book
                     StopCoroutine(moveBackCoroutine);
                 } else
                 {
-                    originalPosition = transform.position;
+                    originalUIPosition = UIManager.Instance.GlobalToUIPosition(transform.position);
                     originalParent = transform.parent;
                     transform.SetParent(InventoryItemsManager.Instance.DragDropHolder);
                 }
@@ -153,11 +161,11 @@ namespace Game.UI.Book
             time = 0;
             while (time < moveBackDuration)
             {
-                transform.position = Vector2.Lerp(transform.position, originalPosition, moveBackCurve.Evaluate(time / moveBackDuration));
+                transform.position = Vector3.Lerp(transform.position, UIManager.Instance.UIToGlobalPosition(originalUIPosition), moveBackCurve.Evaluate(time / moveBackDuration));
                 yield return new WaitForEndOfFrame();
                 time += Time.deltaTime;
             }
-            transform.position = originalPosition;
+            transform.position = UIManager.Instance.UIToGlobalPosition(originalUIPosition);
             transform.SetParent(originalParent, true);
             moveBackCoroutine = null;
         }
@@ -165,13 +173,18 @@ namespace Game.UI.Book
         public void OnPointerEnter(PointerEventData eventData)
         {
             hover = true;
+            showingTooltip = true;
             InventoryItemsManager.Instance.DisplayTooltip(ItemData);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             hover = false;
-            InventoryItemsManager.Instance.ClearTooltip();
+            if (!dragging)
+            {
+                showingTooltip = false;
+                InventoryItemsManager.Instance.ClearTooltip();
+            }
         }
     }
 }

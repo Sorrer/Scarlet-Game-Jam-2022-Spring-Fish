@@ -13,11 +13,11 @@ namespace Game.UI.Book
     {
         public static InventoryItemsManager Instance { get; set; }
         public Transform DragDropHolder { get => dragDropHolder; set => dragDropHolder = value; }
-
+        
         [Header("Dependencies")]
         [SerializeField]
         private Transform dragDropHolder;
-       
+
         [Header("Tooltip")]
         [SerializeField]
         private GameObject tooltip;
@@ -57,9 +57,9 @@ namespace Game.UI.Book
             tooltip.SetActive(false);
         }
 
-        public void MoveTooltip(Vector2 position)
+        public void MoveTooltip(Vector3 position)
         {
-            tooltip.transform.position = position + tooltipOffset;
+            tooltip.transform.position = position + (Vector3) tooltipOffset;
         }
     }
 }

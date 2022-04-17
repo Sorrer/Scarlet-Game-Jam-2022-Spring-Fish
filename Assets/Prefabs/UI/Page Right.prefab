@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2880718805206520428}
   - component: {fileID: 2880718805206520430}
   - component: {fileID: 2880718805206520431}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Page Right BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7268077519635757415}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Content Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 109906536364555639}
   - component: {fileID: 6098611377974149291}
   - component: {fileID: 3873397034479614686}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Shade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 372032535187398164}
   - component: {fileID: 8484799522237834480}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Page Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 2972315027934311993}
   - component: {fileID: 4529968959763240562}
   - component: {fileID: 198209867090639177}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Page Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 6541692416852026611}
   - component: {fileID: 3037609089023046625}
   - component: {fileID: 9147752905162204699}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bottom Decor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +465,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8945132460629605973}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Decor Content Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

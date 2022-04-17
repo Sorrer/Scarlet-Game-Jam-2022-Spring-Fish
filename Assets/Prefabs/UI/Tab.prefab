@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8239923486369400968}
   - component: {fileID: 4896906224123109372}
   - component: {fileID: 3883686466762430164}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6043895565131661603}
   - component: {fileID: 4120851408092204165}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Hover Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 2696810073510559792}
   - component: {fileID: 7491871820803322968}
   - component: {fileID: 6101755796547664946}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tab Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 9002175397693529876}
   - component: {fileID: 7104481339829482282}
   - component: {fileID: 2321650435656360937}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Chapter Tab Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,7 +385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 309608977121144997}
   - component: {fileID: 2029169472127735344}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Click Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7425757668655028628}
   - component: {fileID: 2359337870308767128}
   - component: {fileID: 939736289765294214}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,4 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 601b9bc2eb33f244ea193da37dccd719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnItemChanged:
+    m_PersistentCalls:
+      m_Calls: []
   canAcceptItem: 1
