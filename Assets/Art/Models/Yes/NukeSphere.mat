@@ -7,18 +7,23 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WaterFlorished
-  m_Shader: {fileID: -6465566751694194690, guid: 9abcbba7ef29af94d9945c41171ca36c, type: 3}
-  m_ShaderKeywords: _METALLIC_SETUP _SUNDISK_HIGH_QUALITY
+  m_Name: NukeSphere
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -72,58 +77,48 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_013f63023df84b50a2ed7763ef5860ad: 0.46
-    - Vector1_0cd7cee443414007a797278cc2427abf: 3.11
-    - Vector1_1d61b7e242854ae19ca69b59baea23d3: 1.36
-    - Vector1_2399b3a2589a4719b100a0585bd437ac: 0.16
-    - Vector1_2fb3aa9008ba440a85e2bb0756f1bb0a: -0.04
-    - Vector1_5044dcdeb9454fb788619886248f5223: 0.21
-    - Vector1_6d46e75885c04737a7ad0a79f5a20850: 1
-    - Vector1_76eeb721e55544f8993b348cbd19f702: 0.2
-    - Vector1_bff1126948bf463c86266c414f3dede7: -0.02
-    - Vector1_c6b060bb02564db6a8f9fd8f34baf1bc: 0.31
-    - Vector1_c6e77c2e54534522b582289bf33b9b56: 0.04
-    - Vector1_cc12fe028da54047b60ecd0440221c44: 2
-    - Vector1_da8ed5a808f14b37813450347ea7a81c: 0.78
-    - Vector1_e5ec197cd1e442779e70a43f364ea843: 6.33
-    - Vector1_fbfa08a307114905a541e43bb4d5b528: 0.3
-    - Vector1_ff61b0ba68d24ec4b43cf5928ddab9d1: 0.36
-    - _AtmosphereThickness: 0.53
+    - _AlphaClip: 0
+    - _Blend: 0
     - _BumpScale: 1
+    - _ClearCoatMask: 0
+    - _ClearCoatSmoothness: 0
+    - _Cull: 2
     - _Cutoff: 0.5
+    - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Exposure: 1.25
-    - _GlossMapScale: 1
-    - _Glossiness: 0.5
-    - _GlossyReflections: 1
+    - _EnvironmentReflections: 1
+    - _GlossMapScale: 0
+    - _Glossiness: 0
+    - _GlossyReflections: 0
     - _Metallic: 0
-    - _Mode: 0
     - _OcclusionStrength: 1
-    - _Parallax: 0.02
+    - _Parallax: 0.005
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _SunDisk: 2
-    - _SunSize: 0.04
-    - _SunSizeConvergence: 5
-    - _UVSec: 0
+    - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_4f0d9a495dba42cf869e8e297550992a: {r: 0, g: 0.83137256, b: 0.48178035, a: 1}
-    - Color_5d977115a80b437c9d8a034fd7d32334: {r: 0.007843145, g: 0.3901533, b: 0.53333336, a: 0}
-    - Color_771c52370cf649668e53e57fa7962407: {r: 0, g: 1, b: 0.8512268, a: 0.5372549}
-    - Color_a81f14c99dc1469b97c47d5c25e361fa: {r: 0.6750623, g: 0.68645215, b: 0.6981132, a: 0}
-    - Color_ea1346f64e574446b241a68a85b0026a: {r: 0, g: 1, b: 0.7524569, a: 0.78039217}
-    - Color_ef7a9e2d87c1436a96fc637398fe7d2c: {r: 1, g: 1, b: 1, a: 0}
-    - Vector2_1d982f27789a460d916fcb9bb88594f2: {r: 1.77, g: -1, b: -0.27, a: 0}
-    - Vector2_82843aba87b04a51a260f3049b3912a3: {r: 19.91, g: 21.3, b: 1, a: 0}
-    - Vector2_f8613af1032c4c83b1347d2a2a87b6a8: {r: -1.38, g: 1, b: 0, a: 0}
-    - Vector3_f93b629e77214708970eec4f9689d580: {r: 4.97, g: 6.9, b: 0.72, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GroundColor: {r: 0.6392157, g: 0.6901961, b: 0.7411765, a: 1}
-    - _SkyTint: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
+--- !u!114 &6435860429025050642
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 4

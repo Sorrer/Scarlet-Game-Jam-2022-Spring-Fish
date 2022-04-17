@@ -127,6 +127,8 @@ namespace Game.Systems.Player.States
                 if (heldItem.buildingSettings.IsEndGame)
                 {
                     // Do end game stuff required by this, IDK to be determined
+                    Finish(PlayerStateTypes.LOOK);
+                    return;
                 }
                 
                 feed.inventory.HeldItem = null;
