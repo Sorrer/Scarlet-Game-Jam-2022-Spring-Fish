@@ -224,6 +224,7 @@ MonoBehaviour:
   moveToMouseDuration: 0.5
   moveBackDuration: 1
   itemData: {fileID: 0}
+  cursorData: {fileID: 11400000, guid: b36363654a6a3374cb24b2992464d136, type: 2}
 --- !u!95 &2801287380143913380
 Animator:
   serializedVersion: 3

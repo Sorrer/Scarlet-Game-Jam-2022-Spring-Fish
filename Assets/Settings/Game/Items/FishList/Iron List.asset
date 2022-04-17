@@ -10,18 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19c4505a8f546a7428c9d2816c4f56a0, type: 3}
-  m_Name: Breadcrumbs Trout List
+  m_Name: Iron List
   m_EditorClassIdentifier: 
   _currentIndex: 0
-  FishPrefab: {fileID: 6906639117331138815, guid: 406cfb632ea7bff459580059670b399e, type: 3}
-  FeedItem: {fileID: 11400000, guid: 33c1c22a295d645498c1347b06987c1f, type: 2}
+  FishPrefab: {fileID: 2726358947058655117, guid: 1bb6710071b0b1e439d86c7b3e83f383, type: 3}
+  FeedItem: {fileID: 11400000, guid: 99bb71ecfb8e03b48bbcaaea19785a63, type: 2}
   itemsReceiveOrder:
-  - item: {fileID: 11400000, guid: c3327126957650746b506768731f11d1, type: 2}
+  - item: {fileID: 11400000, guid: ad661c371dd677a4f87e045f8bfec20c, type: 2}
     GoBackToIndex: 0
     GoBackIndex: 0
-  - item: {fileID: 11400000, guid: 14bb3db4ff15a5a4a9c8eb3c18a59525, type: 2}
-    GoBackToIndex: 0
-    GoBackIndex: 0
-  - item: {fileID: 11400000, guid: 2e2648fdc57e8c14cb19757f85de917d, type: 2}
+  - item: {fileID: 11400000, guid: 97ba56ea2dacee24590e912cc5d96ae5, type: 2}
     GoBackToIndex: 1
     GoBackIndex: 1

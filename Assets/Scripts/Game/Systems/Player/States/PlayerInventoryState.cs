@@ -69,7 +69,6 @@ namespace Game.Systems.Player.States
         { 
             bookController.HideBook();
             cursor.position = lastMousePos;
-            InventoryRoot.SetActive(false);
         }
     }
 }

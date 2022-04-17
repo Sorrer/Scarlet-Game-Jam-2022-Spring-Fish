@@ -15,8 +15,8 @@ MonoBehaviour:
   Icon: {fileID: 0}
   Prefab: {fileID: 0}
   Category: 0
-  Name: 
-  Tooltip: 
+  Name: Flower Tree
+  Tooltip: Tree Flower
   prefabScale: {x: 0, y: 0, z: 0}
   prefabRotation: {x: 0, y: 0, z: 0}
   buildingSettings:

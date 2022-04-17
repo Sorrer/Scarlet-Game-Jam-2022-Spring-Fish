@@ -99,7 +99,7 @@ namespace Game.Systems.Player
                 HoveringOverUI = pointerData.pointerCurrentRaycast.isValid;
                 
                 ProcessMove(pointerData);
-
+                
                 MouseButtonEventData buttonEventData = new MouseButtonEventData();
                 buttonEventData.buttonData = pointerData;
                 buttonEventData.buttonState = PointerEventData.FramePressState.NotChanged;

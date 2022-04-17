@@ -64,8 +64,8 @@ namespace Game.UI.Book
         {
             if (pageContentList.Count > 0)
                 LoadPageContents(pageContentList.ToArray());
-            // TODO: Remove this.. Only for testing rn
-            ShowBook();
+            
+            HideBook();
         }
 
         public void ShowBook()

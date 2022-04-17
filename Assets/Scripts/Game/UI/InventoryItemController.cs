@@ -2,6 +2,7 @@ using Game.Systems.Inventory;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Systems.Player;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -50,9 +51,11 @@ namespace Game.UI.Book
             image.sprite = newItemData.Icon;
         }
 
+        public PlayerCursorData cursorData;
+        
         private Vector3 GetMousePos()
         {
-            return UIManager.Instance.ScreenToWorldPoint(Input.mousePosition);
+            return UIManager.Instance.ScreenToWorldPoint(cursorData.position);
         }
 
         private void Awake()
@@ -98,7 +101,7 @@ namespace Game.UI.Book
                 {
                     pointerId = -1,
                 };
-                pointerData.position = Input.mousePosition;
+                pointerData.position = cursorData.position;
 
                 List<RaycastResult> results = new List<RaycastResult>();
                 EventSystem.current.RaycastAll(pointerData, results);
