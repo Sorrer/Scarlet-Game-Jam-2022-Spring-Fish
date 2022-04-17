@@ -53,7 +53,7 @@ namespace Game.UI.Book
                 foreach (var input in recipe.Inputs)
                     tempInputItems.Remove(input);
 
-                if (tempInputItems.Count == 0 && !inventorySO.HasItem(recipe.Outcome))
+                if (tempInputItems.Count == 0 && !inventorySO.HasItem(recipe.Output))
                 {
                     // Crafting is successful, we've used up all the items in the recipe.
                     // This item is also unique too -- otherwise we cannot craft it.
@@ -61,7 +61,7 @@ namespace Game.UI.Book
                     outcomeSlot.ItemController = outcomeItemController;
                     Instantiate(createItemFXPrefab, outcomeSlot.transform.position, Quaternion.identity, outcomeSlot.transform);
 
-                    inventorySO.AddItem(recipe.Outcome);
+                    inventorySO.AddItem(recipe.Output);
 
                     foreach (var slot in inputSlots)
                         if (slot.ItemController != null)

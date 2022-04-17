@@ -9,6 +9,6 @@ namespace Game.Systems.Inventory
     public class CraftingRecipe : ScriptableObject
     {
         public InventoryItem[] Inputs;
-        public InventoryItem Outcome;
+        public InventoryItem Output;
     }
 }
