@@ -1121,13 +1121,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108762295}
-  m_LocalRotation: {x: 0.13819823, y: -0.6018722, z: 0.085439965, w: 0.78188944}
-  m_LocalPosition: {x: 7.5, y: 29.3, z: 8.6}
+  m_LocalRotation: {x: 0.032803185, y: -0.68443435, z: 0.0071466174, w: 0.72830117}
+  m_LocalPosition: {x: 7.5, y: 14.38, z: 8.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 18.6, y: -75.5, z: -1.98}
+  m_LocalEulerAnglesHint: {x: 3.3, y: -86.5, z: -1.98}
 --- !u!1001 &119476719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10880,8 +10880,7 @@ MonoBehaviour:
   feed: {fileID: 0}
   feedCamera: {fileID: 0}
   buildCamera: {fileID: 0}
-  feedLayerOrder: []
-  defaultLayerOrder: []
+  buildingList: {fileID: 0}
   objectToPickup: {fileID: 0}
   feedInteraction: {fileID: 0}
   Water: {fileID: 0}
@@ -10889,6 +10888,9 @@ MonoBehaviour:
   DefaultWater: {fileID: 0}
   DefaultGround: {fileID: 0}
   PondEnvironmentState: {fileID: 0}
+  transitionState: {fileID: 0}
+  endings: {fileID: 0}
+  forest: {fileID: 0}
 --- !u!1001 &1131810743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18064,7 +18066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1808267434
 Transform:
   m_ObjectHideFlags: 0
@@ -21928,6 +21930,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: shack
       objectReference: {fileID: 0}
+    - target: {fileID: 4630286027764264337, guid: d85116079370a21409d31f5730eb2391, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4630286027764264342, guid: d85116079370a21409d31f5730eb2391, type: 3}
       propertyPath: m_Center.y
       value: 4.95
@@ -22032,6 +22038,10 @@ PrefabInstance:
     - target: {fileID: 5733900771890081507, guid: c883507ad44262144b045e733c5911aa, type: 3}
       propertyPath: m_Name
       value: garden_veggies
+      objectReference: {fileID: 0}
+    - target: {fileID: 5733900771890081507, guid: c883507ad44262144b045e733c5911aa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c883507ad44262144b045e733c5911aa, type: 3}
@@ -22277,6 +22287,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: garden_flower
       objectReference: {fileID: 0}
+    - target: {fileID: 7840017174887741742, guid: 1935c109ebf81474c8c989555d107c35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1935c109ebf81474c8c989555d107c35, type: 3}
 --- !u!1001 &6954662564156672876
@@ -22333,6 +22347,10 @@ PrefabInstance:
     - target: {fileID: 7800943812089801546, guid: c27a453dcc8ca0644a22d263b2d16263, type: 3}
       propertyPath: m_Name
       value: factory
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800943812089801546, guid: c27a453dcc8ca0644a22d263b2d16263, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c27a453dcc8ca0644a22d263b2d16263, type: 3}
