@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5ebef2c6d821844b1a0ec71a404ba7, type: 3}
+  m_Name: Mine Recipe 2
+  m_EditorClassIdentifier: 
+  Inputs:
+  - {fileID: 11400000, guid: ba877529d4fd1fb44b3d3b31d9d3a18a, type: 2}
+  - {fileID: 11400000, guid: 94c5db837fa7c404db8be388b6a908a4, type: 2}
+  Output: {fileID: 0}

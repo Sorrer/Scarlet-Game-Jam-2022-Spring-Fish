@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5ebef2c6d821844b1a0ec71a404ba7, type: 3}
+  m_Name: Giant Cog Recipe
+  m_EditorClassIdentifier: 
+  Inputs:
+  - {fileID: 11400000, guid: d327c5843b2e05d4a82a35c999cd10e4, type: 2}
+  - {fileID: 11400000, guid: 14bb3db4ff15a5a4a9c8eb3c18a59525, type: 2}
+  - {fileID: 11400000, guid: 2e2648fdc57e8c14cb19757f85de917d, type: 2}
+  Output: {fileID: 11400000, guid: 0eaeb70e901666c4b8231b70c84e792e, type: 2}

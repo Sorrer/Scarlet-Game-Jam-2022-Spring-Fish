@@ -1,5 +1,6 @@
 using Game.Systems.CursorInteractable;
 using UnityEngine;
+using UnityEngineInternal;
 
 namespace Game.Systems.Inventory
 {
@@ -24,6 +25,28 @@ namespace Game.Systems.Inventory
 
             go.layer = LayerMask.NameToLayer("Pickup");
 
+            go.name = "Interactable";
+
+            go.GetComponent<Renderer>();
+            
+            
+            goModel.name = "Visual";
+            
+            var collider = goModel.GetComponent<Collider>();
+            if (collider != null)
+            {
+                collider.enabled = false;
+            }
+            else
+            {
+                Debug.LogError("No collider on pick up object, this object wont be pickupable");
+            }
+
+        }
+
+        public void DisableRenderers(GameObject obj)
+        {
+            
         }
     }
 }

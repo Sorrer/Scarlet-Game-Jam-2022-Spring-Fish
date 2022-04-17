@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 211a4b7dc1ad48e9b81b43b877b5a91b, type: 3}
-  m_Name: Industrial Scraps
+  m_Name: SawBlade
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
-  Prefab: {fileID: 0}
-  Category: 0
-  Name: 
-  Tooltip: 
+  Icon: {fileID: 21300000, guid: a1a847aaf1fd4494b8f57d994ce7b68c, type: 3}
+  Prefab: {fileID: 919132149155446097, guid: a11bb4e6bf9fc244985022726affc7df, type: 3}
+  Category: 2
+  Name: SawBlade
+  Tooltip: What do you mean? Its right here.
+  prefabScale: {x: 0.1, y: 0.1, z: 0.1}
+  prefabRotation: {x: 0, y: 0, z: 0}
   buildingSettings:
     forestSettings: []
     Density: 0
@@ -24,4 +26,5 @@ MonoBehaviour:
     EndGameCinematicIndex: 0
     waterMaterial: {fileID: 0}
     groundMaterial: {fileID: 0}
+    FishFoodProduced: {fileID: 0}
     SetPoundState: 0

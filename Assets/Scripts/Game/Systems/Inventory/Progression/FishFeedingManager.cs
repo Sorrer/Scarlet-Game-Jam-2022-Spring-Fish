@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Game.Systems.CursorInteractable;
 using Game.Systems.Player;
 using Game.Systems.Player.States;
 using UnityEngine;
@@ -27,6 +28,9 @@ namespace Game.Systems.Inventory.Progression
         
         public List<FishFeedingList> fishFeedingLists = new List<FishFeedingList>();
         public InventorySO inventory;
+
+        public GameObject pickupInteractorPrefab;
+        
         public bool IsRunning { get; private set;  }
 
         public void FeedFish()
@@ -111,9 +115,14 @@ namespace Game.Systems.Inventory.Progression
 
             if (spawnThisItem != null)
             {
-                var go =Instantiate(spawnThisItem.Prefab, itemSpawnLoc);
+                var go = Instantiate(pickupInteractorPrefab, itemSpawnLoc);
                 go.transform.position = itemSpawnLoc.position;
+                
+                go.GetComponent<ItemSpawn>().SpawnPickUpObject(spawnThisItem);
 
+                go.transform.localScale = spawnThisItem.prefabScale;
+                go.transform.eulerAngles = spawnThisItem.prefabRotation;
+                
                 interactState.objectToPickup = go;
             }
             

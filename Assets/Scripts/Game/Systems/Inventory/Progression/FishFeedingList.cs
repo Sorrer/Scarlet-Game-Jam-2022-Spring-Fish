@@ -20,7 +20,7 @@ namespace Game.Systems.Inventory.Progression
         
         public GameObject FishPrefab;
         public InventoryItem FeedItem;
-
+    
         public List<ItemsOrderNode> itemsReceiveOrder = new List<ItemsOrderNode>();
 
         private void Awake()

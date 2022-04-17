@@ -12,8 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211a4b7dc1ad48e9b81b43b877b5a91b, type: 3}
   m_Name: Breadcrumbs
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 86e86dab463552d47a2f102fe7eaa544, type: 3}
   Prefab: {fileID: 544719806441153646, guid: 421ca9a4a9150504088e471f447f3abe, type: 3}
   Category: 1
   Name: Breadcrumbs
   Tooltip: Some leftovers you found in your pocket. Fish food?
+  prefabScale: {x: 1, y: 1, z: 1}
+  prefabRotation: {x: 0, y: 0, z: 0}
+  buildingSettings:
+    forestSettings: []
+    Density: 0
+    IsEndGame: 0
+    EndGameCinematicIndex: 0
+    waterMaterial: {fileID: 0}
+    groundMaterial: {fileID: 0}
+    FishFoodProduced: {fileID: 0}
+    SetPoundState: 0

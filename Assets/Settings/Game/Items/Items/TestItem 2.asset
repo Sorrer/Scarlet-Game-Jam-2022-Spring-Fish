@@ -17,3 +17,14 @@ MonoBehaviour:
   Category: 1
   Name: Test Item 2
   Tooltip: The sequel to the next best thing!
+  prefabScale: {x: 1, y: 1, z: 1}
+  prefabRotation: {x: 0, y: 0, z: 0}
+  buildingSettings:
+    forestSettings: []
+    Density: 0
+    IsEndGame: 0
+    EndGameCinematicIndex: 0
+    waterMaterial: {fileID: 0}
+    groundMaterial: {fileID: 0}
+    FishFoodProduced: {fileID: 0}
+    SetPoundState: 0

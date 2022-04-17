@@ -32785,6 +32785,7 @@ MonoBehaviour:
   fishFeedingLists:
   - {fileID: 11400000, guid: 5f22f28dfd57f9442beeed6c137c1c2c, type: 2}
   inventory: {fileID: 11400000, guid: ddf9c7c3cd5d0b8439ff7df54093adec, type: 2}
+  pickupInteractorPrefab: {fileID: 7279561860457270778, guid: be289cbffa567fd48b2a1ffd7ae54b1e, type: 3}
 --- !u!1001 &1480711775
 PrefabInstance:
   m_ObjectHideFlags: 0

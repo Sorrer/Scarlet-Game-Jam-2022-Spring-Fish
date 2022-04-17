@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5ebef2c6d821844b1a0ec71a404ba7, type: 3}
+  m_Name: Flower Garden Recipe
+  m_EditorClassIdentifier: 
+  Inputs:
+  - {fileID: 11400000, guid: 4a4e90d72140ca747b11d736e2c12895, type: 2}
+  - {fileID: 11400000, guid: 9f3def529e26fcf47ac368e54106599c, type: 2}
+  Output: {fileID: 11400000, guid: 6b70b9b5a11cee14b8e09631c066a2fa, type: 2}

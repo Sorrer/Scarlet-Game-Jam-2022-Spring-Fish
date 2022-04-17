@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211a4b7dc1ad48e9b81b43b877b5a91b, type: 3}
+  m_Name: Flower Stem
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: 48231a5711f81f24990e0ff914454073, type: 3}
+  Prefab: {fileID: 2812188195440051473, guid: 639303a1927c3604daa3dcef2dde1458, type: 3}
+  Category: 1
+  Name: Flower Stem
+  Tooltip: Where did this come from? Do fish like this?
+  prefabScale: {x: 1, y: 1, z: 1}
+  prefabRotation: {x: 0, y: 0, z: 0}
+  buildingSettings:
+    forestSettings: []
+    Density: 0
+    IsEndGame: 0
+    EndGameCinematicIndex: 0
+    waterMaterial: {fileID: 0}
+    groundMaterial: {fileID: 0}
+    FishFoodProduced: {fileID: 0}
+    SetPoundState: 0

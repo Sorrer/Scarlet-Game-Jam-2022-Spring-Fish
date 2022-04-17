@@ -15,6 +15,9 @@ namespace Game.Systems.Inventory
         public string Name;
         public string Tooltip;
 
+        public Vector3 prefabScale;
+        public Vector3 prefabRotation;
+
         public override int GetHashCode()
         {
             return name.GetHashCode();

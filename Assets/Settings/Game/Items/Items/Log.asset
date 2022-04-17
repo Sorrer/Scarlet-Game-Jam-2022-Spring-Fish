@@ -12,8 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211a4b7dc1ad48e9b81b43b877b5a91b, type: 3}
   m_Name: Log
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
-  Prefab: {fileID: 8264830089511144148, guid: deac8670846ebb745853ba9d2d3507fc, type: 3}
+  Icon: {fileID: 21300000, guid: 01d044bad34ce5c498ad6581c331a382, type: 3}
+  Prefab: {fileID: 919132149155446097, guid: 53b20b6b6cf5cbb47984dfc523be0de3, type: 3}
   Category: 2
   Name: Log
-  Tooltip: Thats a big log.
+  Tooltip: Would this fit in a pool?
+  prefabScale: {x: 0.1, y: 0.1, z: 0.1}
+  prefabRotation: {x: 0, y: 0, z: 0}
+  buildingSettings:
+    forestSettings: []
+    Density: 0
+    IsEndGame: 0
+    EndGameCinematicIndex: 0
+    waterMaterial: {fileID: 0}
+    groundMaterial: {fileID: 0}
+    FishFoodProduced: {fileID: 0}
+    SetPoundState: 0

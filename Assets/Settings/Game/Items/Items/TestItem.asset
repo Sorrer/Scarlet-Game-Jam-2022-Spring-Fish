@@ -17,3 +17,14 @@ MonoBehaviour:
   Category: 1
   Name: Test Item with a really really really long name
   Tooltip: 'This is a test tooltip. Huzzah, it works! asf asdf asdf asdf asdf asf '
+  prefabScale: {x: 1, y: 1, z: 1}
+  prefabRotation: {x: 0, y: 0, z: 0}
+  buildingSettings:
+    forestSettings: []
+    Density: 0
+    IsEndGame: 0
+    EndGameCinematicIndex: 0
+    waterMaterial: {fileID: 0}
+    groundMaterial: {fileID: 0}
+    FishFoodProduced: {fileID: 0}
+    SetPoundState: 0

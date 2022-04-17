@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211a4b7dc1ad48e9b81b43b877b5a91b, type: 3}
+  m_Name: Iron
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: 4cbfd38ce47bf6a47b74a939d87338f8, type: 3}
+  Prefab: {fileID: 3220864494913870066, guid: 9270fe3e59d6aac48aff5c336f665c99, type: 3}
+  Category: 1
+  Name: Iron
+  Tooltip: Iron is a mineral right? Do fish need it?
+  prefabScale: {x: 1, y: 1, z: 1}
+  prefabRotation: {x: 0, y: 0, z: 0}
+  buildingSettings:
+    forestSettings: []
+    Density: 0
+    IsEndGame: 0
+    EndGameCinematicIndex: 0
+    waterMaterial: {fileID: 0}
+    groundMaterial: {fileID: 0}
+    FishFoodProduced: {fileID: 0}
+    SetPoundState: 0
