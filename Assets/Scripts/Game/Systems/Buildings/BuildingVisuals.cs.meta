@@ -7,6 +7,7 @@ MonoImporter:
   - blueTranslucent: {fileID: 2100000, guid: 43879d3407f309a419ea8b5f4cef5cf9, type: 2}
   - greenTranslucent: {fileID: 2100000, guid: c00b926743f4e8349a22d978642b6184, type: 2}
   - highlight: {fileID: 2100000, guid: a601ba162ed4c8145b8b5225efcccdf2, type: 2}
+  - particles: {fileID: 904482183514364486, guid: 74a5513786fede245be327e57b948cbb, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
