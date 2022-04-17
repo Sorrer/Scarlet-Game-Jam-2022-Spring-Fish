@@ -121,13 +121,17 @@ namespace Game.Systems.Player.States
             {
                 transitionState.OnceOnBlink += () =>
                 {
+                    if (heldItem.buildingSettings.FishFoodProduced != null)
+                    {
+                        feed.inventory.AddItem(heldItem.buildingSettings.FishFoodProduced);
+                    }
                     Water.material = DefaultWater;
                     Ground.material = DefaultGround;
 
                     var settings = heldItem.buildingSettings;
                 
                     settings.Apply(Water, Ground, PondEnvironmentState, forest);
-
+                    
                     buildingList.Place(heldItem);
                     
                     if (heldItem.buildingSettings.IsEndGame)

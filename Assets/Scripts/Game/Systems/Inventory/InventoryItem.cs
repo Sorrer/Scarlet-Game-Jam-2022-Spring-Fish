@@ -41,6 +41,9 @@ namespace Game.Systems.Inventory
             public Material waterMaterial;
             [Tooltip("If null, uses default")]
             public Material groundMaterial;
+
+            
+            public InventoryItem FishFoodProduced;
             
             public int SetPoundState;
 
