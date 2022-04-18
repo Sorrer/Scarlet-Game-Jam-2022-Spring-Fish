@@ -66,13 +66,14 @@ namespace Game.UI.Book
         {
             if (pageContentList.Count > 0)
                 LoadPageContents(pageContentList.ToArray());
-            
-            HideBook();
         }
 
         public void ShowBook()
         {
-            if(currentChapter != null) currentChapter.Load();
+            if(currentChapter != null) 
+            {
+                LoadChapter(currentChapter);
+            }
             UIAnimator.Play("Show Book");
             showBookAudio.Play();
         }
