@@ -37,6 +37,7 @@ namespace Game.Systems.CursorInteractable
 
         public void Interact()
         {
+            placed = true;
             buildingVisuals.visualsControl(BuildingVisuals.EffectSelect.Confirm);
         }
 
