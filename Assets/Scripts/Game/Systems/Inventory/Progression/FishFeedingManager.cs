@@ -162,6 +162,12 @@ namespace Game.Systems.Inventory.Progression
         {
             var index = fishFood._currentIndex;
             var list = fishFood.itemsReceiveOrder;
+
+            if (index == -1)
+            {
+                fishFood._currentIndex = 0;
+                return list[index];
+            }
             
             //Increment
             
@@ -189,7 +195,8 @@ namespace Game.Systems.Inventory.Progression
                 }
             }
 
-            
+
+            fishFood._currentIndex = index;
             
             return list[index];
         }
