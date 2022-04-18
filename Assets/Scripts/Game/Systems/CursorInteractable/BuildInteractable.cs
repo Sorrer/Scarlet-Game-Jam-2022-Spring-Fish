@@ -21,7 +21,7 @@ namespace Game.Systems.CursorInteractable
         {
             if(placed) Debug.LogError("Placing an already placed building");
             
-            root.SetActive(true);
+            if(root != null) root.SetActive(true);
             buildingVisuals.visualsControl(BuildingVisuals.EffectSelect.Activate);
         }
         
