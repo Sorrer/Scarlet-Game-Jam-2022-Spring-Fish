@@ -166,7 +166,7 @@ namespace Game.Systems.Inventory.Progression
             if (index == -1)
             {
                 fishFood._currentIndex = 0;
-                return list[index];
+                return list[0];
             }
             
             //Increment
@@ -197,7 +197,7 @@ namespace Game.Systems.Inventory.Progression
 
 
             fishFood._currentIndex = index;
-            
+            Debug.Log(index);
             return list[index];
         }
     }
