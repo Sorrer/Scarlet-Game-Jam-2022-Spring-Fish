@@ -14,6 +14,8 @@ namespace Game.UI.Book
         [SerializeField]
         private Animator animator;
         [SerializeField]
+        private Animator UIAnimator;
+        [SerializeField]
         private AnimationClip flipLeftClip;
         [SerializeField]
         private AnimationClip flipRightClip;
@@ -70,13 +72,15 @@ namespace Game.UI.Book
 
         public void ShowBook()
         {
-            animator.Play("Show Book");
+            if(currentChapter != null) currentChapter.Load();
+            UIAnimator.Play("Show Book");
             showBookAudio.Play();
         }
         
         public void HideBook()
         {
-            animator.Play("Hide Book");
+            if(currentChapter != null) currentChapter.Unload();
+            UIAnimator.Play("Hide Book");
             hideBookAudio.Play();
         }
 

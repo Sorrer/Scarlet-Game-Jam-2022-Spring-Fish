@@ -40,6 +40,7 @@ namespace Game.Systems.Inventory
             else
             {
                 Debug.LogError("No collider on pick up object, this object wont be pickupable");
+                
             }
 
         }

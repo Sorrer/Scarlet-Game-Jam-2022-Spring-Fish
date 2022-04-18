@@ -52,7 +52,8 @@ namespace Game.Systems.Inventory.Progression
             if (list == null)
             {
                 Debug.LogError("Invalid item go fed, this should not happen, forcing done");
-                StartFeedingAnimation(null, list);
+                //StartFeedingAnimation(null, list);
+                IsRunning = false;
                 return;
             }
 

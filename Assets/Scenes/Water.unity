@@ -4874,7 +4874,7 @@ MonoBehaviour:
     interactionSettings: {fileID: 11400000, guid: 101714c2126e4744d948bdac3f97c4cc, type: 2}
     AllowInventoryOpen: 0
     AllowUIInteraction: 1
-    LookLimit: 0.888
+    LookLimit: 1
   InventoryRoot: {fileID: 7521365177175377177}
   inventory: {fileID: 11400000, guid: ddf9c7c3cd5d0b8439ff7df54093adec, type: 2}
   cursor: {fileID: 11400000, guid: b36363654a6a3374cb24b2992464d136, type: 2}
@@ -5404,7 +5404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &192610745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31183,6 +31183,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 52a1a725f2a6925469677e79c06d31ba, type: 3}
   m_PrefabInstance: {fileID: 1370978685}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1372030821 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8862844055037992800, guid: 241e3431397d6d64ab46ea47de238534, type: 3}
+  m_PrefabInstance: {fileID: 4071900592728453828}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1373822759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53664,6 +53669,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2480544466644871710, guid: 241e3431397d6d64ab46ea47de238534, type: 3}
+      propertyPath: UIAnimator
+      value: 
+      objectReference: {fileID: 1372030821}
     - target: {fileID: 2874277864323316807, guid: 241e3431397d6d64ab46ea47de238534, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
