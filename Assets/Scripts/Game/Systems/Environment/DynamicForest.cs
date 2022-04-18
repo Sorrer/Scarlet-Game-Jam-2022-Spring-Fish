@@ -60,12 +60,12 @@ namespace Game.Systems.Environment
 
             List<ProgressionElement> elementsCopy = elements.ToList();
 
-            while (elementsCopy.Count > 0 || totalElementsDisabled > 0)
+            while (elementsCopy.Count > 0 && totalElementsDisabled > 0)
             {
                 int randomIndex = Random.Range(0, elementsCopy.Count);
                 
                 elementsCopy[randomIndex].gameObject.SetActive(false);
-                
+                elementsCopy.RemoveAt(randomIndex);
                 totalElementsDisabled--;
             }
             
