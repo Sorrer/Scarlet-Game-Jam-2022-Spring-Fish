@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Game.Systems.CursorInteractable;
 using Game.Systems.Player;
@@ -32,6 +33,14 @@ namespace Game.Systems.Inventory.Progression
         public GameObject pickupInteractorPrefab;
         
         public bool IsRunning { get; private set;  }
+
+        private void Awake()
+        {
+            foreach (var list in fishFeedingLists)
+            {
+                list._currentIndex = -1;
+            }
+        }
 
         public void FeedFish()
         {
