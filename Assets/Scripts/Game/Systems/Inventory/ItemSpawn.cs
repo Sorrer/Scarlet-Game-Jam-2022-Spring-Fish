@@ -40,7 +40,17 @@ namespace Game.Systems.Inventory
             else
             {
                 Debug.LogError("No collider on pick up object, this object wont be pickupable");
-                
+                var renderer = go.GetComponent<MeshFilter>();
+                if (renderer != null)
+                {
+                    var meshC = go.AddComponent<MeshCollider>();
+                    meshC.sharedMesh = renderer.mesh;
+                }
+                else
+                {
+                    var meshC = go.AddComponent<SphereCollider>();
+                    meshC.radius = 2;
+                }
             }
 
         }

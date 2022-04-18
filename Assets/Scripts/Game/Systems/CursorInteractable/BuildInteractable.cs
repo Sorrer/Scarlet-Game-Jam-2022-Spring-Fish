@@ -12,6 +12,8 @@ namespace Game.Systems.CursorInteractable
         public bool placed = false;
         private void Start()
         {
+            buildingVisuals = this.GetComponent<BuildingVisuals>();
+            root = this.transform.parent.gameObject;
             root.SetActive(false);
         }
 

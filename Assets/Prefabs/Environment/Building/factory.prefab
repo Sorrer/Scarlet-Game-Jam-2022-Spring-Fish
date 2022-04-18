@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4077396917681071560}
   - component: {fileID: 6455035598520238116}
   - component: {fileID: 2104990583094427976}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ladder Steppy-Steps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 7038208454715076613}
   - component: {fileID: 3207407662382771395}
   - component: {fileID: 1334556058090547039}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wee woo Pipe-aroos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 1656529465841909214}
   - component: {fileID: 5758002709127316246}
   - component: {fileID: 1822293861337691555}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 4772532693094956680}
   - component: {fileID: 8486451179081444439}
   - component: {fileID: 5945432542125262470}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building pipes.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,8 @@ GameObject:
   - component: {fileID: 4644403833690239593}
   - component: {fileID: 5422311967129987282}
   - component: {fileID: 5422311967129987293}
-  m_Layer: 0
+  - component: {fileID: 685355885}
+  m_Layer: 9
   m_Name: factoryyyyyy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,6 +431,22 @@ MonoBehaviour:
   greenTranslucent: {fileID: 2100000, guid: c00b926743f4e8349a22d978642b6184, type: 2}
   highlight: {fileID: 2100000, guid: a601ba162ed4c8145b8b5225efcccdf2, type: 2}
   particles: {fileID: 904482183514364486, guid: 74a5513786fede245be327e57b948cbb, type: 3}
+--- !u!114 &685355885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5422311967129987283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba0dc13c7eb444f982a5f75fba8e922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingReference: {fileID: 11400000, guid: 2b451e861bca41c40bd76a857143d2a8, type: 2}
+  buildingVisuals: {fileID: 0}
+  root: {fileID: 0}
+  placed: 0
 --- !u!1 &5503154163258506986
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,7 +458,7 @@ GameObject:
   - component: {fileID: 4062055102783989514}
   - component: {fileID: 2792823874120658839}
   - component: {fileID: 1756506109975697691}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +540,7 @@ GameObject:
   - component: {fileID: 5687245665636785724}
   - component: {fileID: 4613356108893694633}
   - component: {fileID: 7339994926650770285}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Big Tubey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,7 +621,7 @@ GameObject:
   - component: {fileID: 1805837143646710660}
   - component: {fileID: 451870912632715447}
   - component: {fileID: 9077083053298920261}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torus.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +702,7 @@ GameObject:
   - component: {fileID: 1618479273307784061}
   - component: {fileID: 7003219189340426837}
   - component: {fileID: 9062126998105481010}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MmMMm! Legs!!
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -766,7 +783,7 @@ GameObject:
   - component: {fileID: 5974427109327095726}
   - component: {fileID: 794965965257239474}
   - component: {fileID: 1915682148492565570}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -848,7 +865,7 @@ GameObject:
   - component: {fileID: 739868936715649032}
   - component: {fileID: 4979063034026002260}
   - component: {fileID: 4238123148942638519}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building pipes.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -929,7 +946,7 @@ GameObject:
   - component: {fileID: 5579660878650272619}
   - component: {fileID: 2363943384021438213}
   - component: {fileID: 1518202344679825693}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1011,7 +1028,7 @@ GameObject:
   - component: {fileID: 3811302067909217242}
   - component: {fileID: 6670023747802570094}
   - component: {fileID: 7784113366698244286}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Great Water Tower Cistern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1092,7 +1109,7 @@ GameObject:
   - component: {fileID: 2141216268150718557}
   - component: {fileID: 9096892448056902551}
   - component: {fileID: 9047414194425337416}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ladder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

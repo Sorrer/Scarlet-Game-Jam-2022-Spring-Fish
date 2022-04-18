@@ -376,6 +376,7 @@ GameObject:
   - component: {fileID: 8168258234095081693}
   - component: {fileID: 8607538409685800280}
   - component: {fileID: 1325311450615319101}
+  - component: {fileID: 126615223}
   m_Layer: 0
   m_Name: turniptree
   m_TagString: Untagged
@@ -431,3 +432,19 @@ MonoBehaviour:
   greenTranslucent: {fileID: 2100000, guid: c00b926743f4e8349a22d978642b6184, type: 2}
   highlight: {fileID: 2100000, guid: a601ba162ed4c8145b8b5225efcccdf2, type: 2}
   particles: {fileID: 904482183514364486, guid: 74a5513786fede245be327e57b948cbb, type: 3}
+--- !u!114 &126615223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8795718340910105191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba0dc13c7eb444f982a5f75fba8e922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingReference: {fileID: 11400000, guid: 54c6eb1f534c24f4d8e70e61e0dc19d3, type: 2}
+  buildingVisuals: {fileID: 0}
+  root: {fileID: 6067629469792865878}
+  placed: 0

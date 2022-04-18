@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3594784805993874268}
   - component: {fileID: 4838801540354977923}
   - component: {fileID: 5926468530304251022}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 6746605920668605568}
   - component: {fileID: 4474114412822073756}
   - component: {fileID: 5917564784063589605}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BASE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 2637581107435701790}
   - component: {fileID: 7884379042610428701}
   - component: {fileID: 6558865630314805925}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 1254969243254545933}
   - component: {fileID: 1474720305073380336}
   - component: {fileID: 4503643426427829296}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 7079225169297112101}
   - component: {fileID: 5363302676932002304}
   - component: {fileID: 3379106417020472986}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 7403316519187248450}
   - component: {fileID: 869027841595087133}
   - component: {fileID: 8449799551918072597}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,7 +499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5023900683856503694}
   m_Layer: 0
-  m_Name: toolShed
+  m_Name: toolshed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -531,7 +531,7 @@ GameObject:
   - component: {fileID: 5067289588437092449}
   - component: {fileID: 8320953738723981902}
   - component: {fileID: 8353879804851302859}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,7 +613,7 @@ GameObject:
   - component: {fileID: 412949569721474750}
   - component: {fileID: 5965571701624749218}
   - component: {fileID: 3412907863542931452}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pickaxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 4887428656659532311}
   - component: {fileID: 9008506033898169527}
   - component: {fileID: 7551321587947712335}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -777,7 +777,7 @@ GameObject:
   - component: {fileID: 8887158764479145900}
   - component: {fileID: 4222293912724189261}
   - component: {fileID: 5795820247262883078}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flower tray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -858,7 +858,7 @@ GameObject:
   - component: {fileID: 1662915078070909974}
   - component: {fileID: 3102637526304804421}
   - component: {fileID: 7408113148310581812}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Loops
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -941,7 +941,7 @@ GameObject:
   - component: {fileID: 5838371992555725506}
   - component: {fileID: 8958788278323697732}
   - component: {fileID: 1452213120012509421}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Teenage Dirtbag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1024,7 +1024,8 @@ GameObject:
   - component: {fileID: 7574227038227741756}
   - component: {fileID: 7086097289475352192}
   - component: {fileID: 7086097289475352193}
-  m_Layer: 0
+  - component: {fileID: 1219655206}
+  m_Layer: 9
   m_Name: toolshed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1082,6 +1083,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 14, y: 14, z: 14}
   m_Center: {x: 0, y: 8.4, z: 0}
+--- !u!114 &1219655206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7086097289475352198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba0dc13c7eb444f982a5f75fba8e922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingReference: {fileID: 11400000, guid: 266e52576b09e6c46828d62dcf7ffa18, type: 2}
+  buildingVisuals: {fileID: 7086097289475352192}
+  root: {fileID: 5023900683856503689}
+  placed: 0
 --- !u!1 &7731802576790111081
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,7 +1110,7 @@ GameObject:
   - component: {fileID: 1809153117121667730}
   - component: {fileID: 4611272721019327092}
   - component: {fileID: 5781458513217524073}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon rack
   m_TagString: Untagged
   m_Icon: {fileID: 0}

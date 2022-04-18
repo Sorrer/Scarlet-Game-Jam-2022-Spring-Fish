@@ -17,6 +17,10 @@ namespace Game.Systems.Buildings
 
         public List<BuildingListPrefabPair> pairs = new List<BuildingListPrefabPair>();
 
+        private void Awake()
+        {
+            DeactivateAll();
+        }
 
         public void Activate(InventoryItem item)
         {

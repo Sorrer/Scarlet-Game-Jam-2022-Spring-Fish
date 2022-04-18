@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2195628464024663609}
   - component: {fileID: 1527741548624440460}
   - component: {fileID: 2255596420868937501}
-  m_Layer: 0
+  - component: {fileID: 607225549}
+  m_Layer: 9
   m_Name: mineshaft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,6 +70,22 @@ MonoBehaviour:
   greenTranslucent: {fileID: 2100000, guid: c00b926743f4e8349a22d978642b6184, type: 2}
   highlight: {fileID: 2100000, guid: a601ba162ed4c8145b8b5225efcccdf2, type: 2}
   particles: {fileID: 904482183514364486, guid: 74a5513786fede245be327e57b948cbb, type: 3}
+--- !u!114 &607225549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527741548624440451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba0dc13c7eb444f982a5f75fba8e922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingReference: {fileID: 11400000, guid: d4380c793336adc40aecb7f0733fbd9a, type: 2}
+  buildingVisuals: {fileID: 0}
+  root: {fileID: 0}
+  placed: 0
 --- !u!1 &2569245880904568610
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,7 +97,7 @@ GameObject:
   - component: {fileID: 5249752202428673242}
   - component: {fileID: 6309958489159847545}
   - component: {fileID: 4985538740055311793}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wheelless, no wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +178,7 @@ GameObject:
   - component: {fileID: 5987685605114709489}
   - component: {fileID: 1436079829492319724}
   - component: {fileID: 1412380862725056802}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shafts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +259,7 @@ GameObject:
   - component: {fileID: 5313824056372614415}
   - component: {fileID: 5170767188509426060}
   - component: {fileID: 1038913067685218591}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rocksanne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +341,7 @@ GameObject:
   - component: {fileID: 399586252037355990}
   - component: {fileID: 3044699123254939124}
   - component: {fileID: 6855527616987502360}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +448,7 @@ GameObject:
   - component: {fileID: 4402306001293822211}
   - component: {fileID: 896057271786506002}
   - component: {fileID: 5876206126449932500}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Coal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +529,7 @@ GameObject:
   - component: {fileID: 1978076221838935010}
   - component: {fileID: 7102541009413113257}
   - component: {fileID: 7248173644965777935}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wheelless, no wheels.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -593,7 +610,7 @@ GameObject:
   - component: {fileID: 7795137125960813304}
   - component: {fileID: 5543405198006946398}
   - component: {fileID: 5704682956005011111}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ladder.021
   m_TagString: Untagged
   m_Icon: {fileID: 0}

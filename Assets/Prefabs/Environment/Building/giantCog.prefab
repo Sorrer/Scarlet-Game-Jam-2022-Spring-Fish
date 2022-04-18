@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8161831356072328457}
   - component: {fileID: 7241184712604518647}
   - component: {fileID: 5017484937262614914}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spooked dirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,8 @@ GameObject:
   - component: {fileID: 4927149455007503511}
   - component: {fileID: 5704672037818797614}
   - component: {fileID: 3357454222998874191}
-  m_Layer: 0
+  - component: {fileID: 2086322007}
+  m_Layer: 9
   m_Name: giantCog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,6 +147,22 @@ MonoBehaviour:
   greenTranslucent: {fileID: 2100000, guid: c00b926743f4e8349a22d978642b6184, type: 2}
   highlight: {fileID: 2100000, guid: a601ba162ed4c8145b8b5225efcccdf2, type: 2}
   particles: {fileID: 904482183514364486, guid: 74a5513786fede245be327e57b948cbb, type: 3}
+--- !u!114 &2086322007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5704672037818797613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba0dc13c7eb444f982a5f75fba8e922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingReference: {fileID: 11400000, guid: 0eaeb70e901666c4b8231b70c84e792e, type: 2}
+  buildingVisuals: {fileID: 0}
+  root: {fileID: 0}
+  placed: 0
 --- !u!1 &6719125914033043388
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +205,7 @@ GameObject:
   - component: {fileID: 4110939229913125381}
   - component: {fileID: 8603075440003159419}
   - component: {fileID: 276620832698582343}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: COG
   m_TagString: Untagged
   m_Icon: {fileID: 0}

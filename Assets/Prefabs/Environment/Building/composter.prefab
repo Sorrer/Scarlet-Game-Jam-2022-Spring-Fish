@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3944768743058598225}
   - component: {fileID: 5945491055909779706}
   - component: {fileID: 513825181377299368}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wood dark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 1471750818835291333}
   - component: {fileID: 1516520313800160713}
   - component: {fileID: 8461577694211796827}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trash Pudding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,8 @@ GameObject:
   - component: {fileID: 2640714035501322019}
   - component: {fileID: 5073307426415598926}
   - component: {fileID: 3233612674253970824}
-  m_Layer: 0
+  - component: {fileID: 892824353}
+  m_Layer: 9
   m_Name: composter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,6 +262,22 @@ MonoBehaviour:
   greenTranslucent: {fileID: 2100000, guid: c00b926743f4e8349a22d978642b6184, type: 2}
   highlight: {fileID: 2100000, guid: a601ba162ed4c8145b8b5225efcccdf2, type: 2}
   particles: {fileID: 904482183514364486, guid: 74a5513786fede245be327e57b948cbb, type: 3}
+--- !u!114 &892824353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3453807640755410329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba0dc13c7eb444f982a5f75fba8e922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingReference: {fileID: 11400000, guid: e25d722d8f7e0084592d44a0ad6db461, type: 2}
+  buildingVisuals: {fileID: 0}
+  root: {fileID: 0}
+  placed: 0
 --- !u!1 &6774338810178277159
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +289,7 @@ GameObject:
   - component: {fileID: 4224658375659095374}
   - component: {fileID: 1082839174656587770}
   - component: {fileID: 1776832184721038983}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wood light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
