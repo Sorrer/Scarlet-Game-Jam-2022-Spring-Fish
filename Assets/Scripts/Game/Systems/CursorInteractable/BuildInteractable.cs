@@ -10,7 +10,7 @@ namespace Game.Systems.CursorInteractable
         public BuildingVisuals buildingVisuals;
         public GameObject root;
         public bool placed = false;
-        private void Start()
+        private void Awake()
         {
             buildingVisuals = this.GetComponent<BuildingVisuals>();
             root = this.transform.parent.gameObject;
@@ -49,7 +49,7 @@ namespace Game.Systems.CursorInteractable
 
         public void Deactivate()
         {
-            if(!placed)
+            if(!placed && root != null)
             root.SetActive(false);
         }
 

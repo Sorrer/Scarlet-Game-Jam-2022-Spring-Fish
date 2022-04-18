@@ -26,8 +26,12 @@ namespace Game.Systems.Buildings
                 pair.buildingRelation = pairs[i].interactable.buildingReference;
                 pairs[i] = pair;
             }
-            DeactivateAll();
 
+        }
+
+        public void Start()
+        {
+            DeactivateAll();
         }
 
         public void Activate(InventoryItem item)
