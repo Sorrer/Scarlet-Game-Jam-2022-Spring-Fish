@@ -20,6 +20,15 @@ namespace Game.Systems.Buildings
         private void Awake()
         {
             DeactivateAll();
+
+            for (int i = 0; i < pairs.Count; i++)
+            {
+                var pair = 
+                    pairs[i];
+                    
+                pair.buildingRelation= pairs[i].interactable.buildingReference;
+                pairs[i] = pair;
+            }
         }
 
         public void Activate(InventoryItem item)
