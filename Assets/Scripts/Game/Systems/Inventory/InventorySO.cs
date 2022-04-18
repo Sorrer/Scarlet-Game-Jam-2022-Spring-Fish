@@ -25,6 +25,7 @@ namespace Game.Systems.Inventory
 
         private void OnEnable()
         {
+            HeldItem = null;
             Items.Clear();
             foreach (var item in preloadItems)
                 Items.Add(item);
