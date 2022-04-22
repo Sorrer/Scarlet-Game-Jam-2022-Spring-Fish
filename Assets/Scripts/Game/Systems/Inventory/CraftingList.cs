@@ -85,7 +85,7 @@ namespace Game.Systems.Inventory
                     return null;
             }
 
-            if (currNode.Output.Category == ItemCategories.Buildings)
+            if (currNode.Output != null && currNode.Output.Category == ItemCategories.Buildings)
             {
                 if (buildingsBuilt.Contains(currNode.Output))
                 {
