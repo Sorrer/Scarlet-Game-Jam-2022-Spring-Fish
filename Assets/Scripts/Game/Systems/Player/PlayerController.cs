@@ -97,9 +97,19 @@ namespace Game.Systems.Player
                 eventSystem.SetSelectedGameObject(pointerData.pointerCurrentRaycast.gameObject);
                 
                 HoveringOverUI = pointerData.pointerCurrentRaycast.isValid;
+
+                List<GameObject> hovered = new List<GameObject>();
+
+                foreach (var i in raycastResults)
+                {
+                    hovered.Add(i.gameObject);
+                }
+
+                pointerData.hovered = hovered;
+                pointerData.dragging = Input.GetMouseButton(0);
                 
-                ProcessMove(pointerData);
-                
+                //ProcessMove(pointerData);
+                HandlePointerExitAndEnter(pointerData, pointerData.pointerCurrentRaycast.gameObject);
                 MouseButtonEventData buttonEventData = new MouseButtonEventData();
                 buttonEventData.buttonData = pointerData;
                 buttonEventData.buttonState = PointerEventData.FramePressState.NotChanged;
