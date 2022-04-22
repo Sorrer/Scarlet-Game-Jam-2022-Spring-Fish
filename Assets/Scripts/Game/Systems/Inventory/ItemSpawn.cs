@@ -49,7 +49,7 @@ namespace Game.Systems.Inventory
                 else
                 {
                     var meshC = go.AddComponent<SphereCollider>();
-                    meshC.radius = 2;
+                    meshC.radius = 2 * (1/go.transform.localScale.magnitude);
                 }
             }
 

@@ -17,7 +17,7 @@ MonoBehaviour:
   Category: 2
   Name: Zen Jar
   Tooltip: Peace in a jar
-  prefabScale: {x: 0.1, y: 0.1, z: 0.1}
+  prefabScale: {x: 0.3, y: 0.3, z: 0.3}
   prefabRotation: {x: 0, y: 0, z: 0}
   buildingSettings:
     forestSettings: []

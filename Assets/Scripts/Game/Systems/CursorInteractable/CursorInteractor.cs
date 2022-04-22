@@ -20,7 +20,7 @@ namespace Game.Systems.CursorInteractable
         public OnInteract OnSelectEvent;
         public OnInteract OnDeselectEvent;
         
-
+    
         private IInteractable lastInteractable;
         
         

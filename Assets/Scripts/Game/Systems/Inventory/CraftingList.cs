@@ -32,6 +32,13 @@ namespace Game.Systems.Inventory
             return GetIndexSortedInputs(recipe.Inputs);
         }
 
+        public List<InventoryItem> buildingsBuilt = new List<InventoryItem>();
+        
+        private void OnEnable()
+        {
+            buildingsBuilt.Clear();
+        }
+
         // Returns inputs of recipe sorted by the index given by InventoryItemsManager
         private List<InventoryItem> GetIndexSortedInputs(IEnumerable<InventoryItem> inputs)
         {
@@ -78,6 +85,13 @@ namespace Game.Systems.Inventory
                     return null;
             }
 
+            if (currNode.Output.Category == ItemCategories.Buildings)
+            {
+                if (buildingsBuilt.Contains(currNode.Output))
+                {
+                    return null;
+                }
+            }
             // We've travesed successfully to the output location
             // (Note that this is not necessarily the last node in a chain)
             return currNode.Output;

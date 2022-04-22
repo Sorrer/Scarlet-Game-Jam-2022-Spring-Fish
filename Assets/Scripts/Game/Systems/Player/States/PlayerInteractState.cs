@@ -32,6 +32,8 @@ namespace Game.Systems.Player.States
         public CinematicEndings endings;
 
         public DynamicForest forest;
+
+        public CraftingList craftingList;
         public override void StateStart()
         {
             //If held item is feed, allow selection for that + pickup
@@ -141,6 +143,7 @@ namespace Game.Systems.Player.States
                     
                     buildingList.Place(heldItem);
                     
+                    
                     if (heldItem.buildingSettings.IsEndGame)
                     {
                         endings.Play(heldItem.buildingSettings.EndGameCinematicIndex);
@@ -148,6 +151,7 @@ namespace Game.Systems.Player.States
                     }
                 };
                 
+                craftingList.buildingsBuilt.Add(heldItem);
                 feed.inventory.RemoveItem(feed.inventory.HeldItem);
                 feed.inventory.HeldItem = null;
                 Finish(PlayerStateTypes.INTERACT);

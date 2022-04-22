@@ -31,4 +31,4 @@ MonoBehaviour:
     waterMaterial: {fileID: 0}
     groundMaterial: {fileID: 0}
     FishFoodProduced: {fileID: 11400000, guid: 1dfd8ae455b830d4ea31b1e53b02cd7d, type: 2}
-    SetPoundState: 1
+    SetPoundState: 0
