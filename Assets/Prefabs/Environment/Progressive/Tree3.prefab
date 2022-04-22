@@ -215,7 +215,7 @@ MonoBehaviour:
   BurntModel: {fileID: 8846070598194246154}
   DefaultModel: {fileID: 8846070597839218961}
   FlorishModel: {fileID: 8846070597911676685}
-  ScaleVariance: 0.2
+  ScaleVariance: 0.3
 --- !u!1 &8620604658073478065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,11 +1046,11 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: ea7dc9ca24a744c448a50aa003600d80, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b841511cf0c54f241a1834fa22505536, type: 2}
+      objectReference: {fileID: -6478536213147159724, guid: ea7dc9ca24a744c448a50aa003600d80, type: 3}
     - target: {fileID: -7511558181221131132, guid: ea7dc9ca24a744c448a50aa003600d80, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: b841511cf0c54f241a1834fa22505536, type: 2}
+      objectReference: {fileID: -3846018093981099296, guid: ea7dc9ca24a744c448a50aa003600d80, type: 3}
     - target: {fileID: 919132149155446097, guid: ea7dc9ca24a744c448a50aa003600d80, type: 3}
       propertyPath: m_Name
       value: Tree Stump
@@ -1208,6 +1208,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ea7dc9ca24a744c448a50aa003600d80, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b841511cf0c54f241a1834fa22505536, type: 2}
+    - target: {fileID: -7511558181221131132, guid: ea7dc9ca24a744c448a50aa003600d80, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: b841511cf0c54f241a1834fa22505536, type: 2}
     - target: {fileID: 919132149155446097, guid: ea7dc9ca24a744c448a50aa003600d80, type: 3}
       propertyPath: m_Name
       value: Tree Burnt Stump

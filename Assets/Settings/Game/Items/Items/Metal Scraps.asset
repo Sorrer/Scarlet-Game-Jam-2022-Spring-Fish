@@ -17,7 +17,7 @@ MonoBehaviour:
   Category: 2
   Name: Metal Scrap
   Tooltip: Band time.
-  prefabScale: {x: 0, y: 0, z: 0}
+  prefabScale: {x: 0.2, y: 0.2, z: 0.2}
   prefabRotation: {x: 0, y: 0, z: 0}
   buildingSettings:
     forestSettings: []

@@ -23,7 +23,7 @@ MonoBehaviour:
     forestSettings:
     - SpawnWeight: 1
       stage: 4
-    Density: 0.716
+    Density: 0.864
     IsEndGame: 0
     EndGameCinematicIndex: 0
     waterMaterial: {fileID: 0}

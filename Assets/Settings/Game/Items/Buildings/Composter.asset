@@ -25,10 +25,10 @@ MonoBehaviour:
       stage: 4
     - SpawnWeight: 5
       stage: 5
-    Density: 0.823
+    Density: 0.846
     IsEndGame: 0
     EndGameCinematicIndex: 0
     waterMaterial: {fileID: 0}
-    groundMaterial: {fileID: 2100000, guid: 61466679046f60d4997cd3aa192ebff2, type: 2}
+    groundMaterial: {fileID: 0}
     FishFoodProduced: {fileID: 11400000, guid: af47455c098af7647acc0b611d6234ab, type: 2}
     SetPoundState: 1

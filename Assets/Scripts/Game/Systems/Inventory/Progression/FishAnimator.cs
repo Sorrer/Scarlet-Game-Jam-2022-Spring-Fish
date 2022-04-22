@@ -40,7 +40,6 @@ namespace Game.Systems.Inventory.Progression
             if (currentFish != null && currentFish.IsFinished)
             {
                 IsFinished = true;
-                Destroy(currentFish.gameObject);
                 currentFish = null;
             }
         }

@@ -21,11 +21,11 @@ MonoBehaviour:
   prefabRotation: {x: 0, y: 0, z: 0}
   buildingSettings:
     forestSettings:
-    - SpawnWeight: 1
-      stage: 4
     - SpawnWeight: 100
+      stage: 4
+    - SpawnWeight: 15
       stage: 1
-    Density: 0
+    Density: 0.87
     IsEndGame: 0
     EndGameCinematicIndex: 0
     waterMaterial: {fileID: 0}

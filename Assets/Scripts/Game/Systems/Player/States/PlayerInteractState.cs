@@ -93,7 +93,14 @@ namespace Game.Systems.Player.States
         public override void OnDeselect(IInteractable interacted)
         {
             base.OnDeselect(interacted);
-            if(feed.inventory.HeldItem != null) interactor.data.cursorGraphicType = PlayerCursorData.CursorGraphicType.SELECT_CIRCLE;
+            if (feed.inventory.HeldItem != null)
+            {
+                interactor.data.cursorGraphicType = PlayerCursorData.CursorGraphicType.SELECT_CIRCLE;
+            }
+            else
+            {
+                interactor.data.cursorGraphicType = PlayerCursorData.CursorGraphicType.EYE;
+            }
         }
 
         public override void OnInteract(IInteractable interacted)

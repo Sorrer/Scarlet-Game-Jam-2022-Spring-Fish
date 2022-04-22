@@ -25,7 +25,7 @@ MonoBehaviour:
       stage: 1
     - SpawnWeight: 50
       stage: 4
-    Density: 0
+    Density: 0.608
     IsEndGame: 0
     EndGameCinematicIndex: 0
     waterMaterial: {fileID: 0}

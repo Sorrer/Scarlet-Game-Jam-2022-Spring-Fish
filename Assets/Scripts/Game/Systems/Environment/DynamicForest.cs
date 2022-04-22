@@ -50,7 +50,7 @@ namespace Game.Systems.Environment
             }
 
             int totalElements = elements.Count;
-            int totalElementsDisabled = (int) ((int) elements.Count * Mathf.Clamp(density, 0, 1));
+            int totalElementsDisabled = (int) ((int) elements.Count * (1 - Mathf.Clamp(density, 0, 1)));
             for (int i = 0; i < elements.Count; i++)
             {
                 
@@ -82,6 +82,7 @@ namespace Game.Systems.Environment
                 randomValue -= progressions[i].SpawnWeight;
                 if (randomValue <= 0)
                 {
+                    return progressions[i].stage;
                 }
             }
 

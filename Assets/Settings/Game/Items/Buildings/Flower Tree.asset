@@ -20,8 +20,10 @@ MonoBehaviour:
   prefabScale: {x: 0, y: 0, z: 0}
   prefabRotation: {x: 0, y: 0, z: 0}
   buildingSettings:
-    forestSettings: []
-    Density: 0
+    forestSettings:
+    - SpawnWeight: 1
+      stage: 5
+    Density: 0.969
     IsEndGame: 0
     EndGameCinematicIndex: 0
     waterMaterial: {fileID: 0}

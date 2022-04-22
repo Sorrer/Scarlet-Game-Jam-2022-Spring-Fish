@@ -27,12 +27,12 @@ namespace Game.Systems.CursorInteractable
         
         public void OnSelect()
         {
-            buildingVisuals.visualsControl(BuildingVisuals.EffectSelect.Hover);
+            if(!placed) buildingVisuals.visualsControl(BuildingVisuals.EffectSelect.Hover);
         }
 
         public void OnDeselect()
         {
-            buildingVisuals.visualsControl(BuildingVisuals.EffectSelect.Unhover);
+            if(!placed) buildingVisuals.visualsControl(BuildingVisuals.EffectSelect.Unhover);
         }
 
         public void Interact()

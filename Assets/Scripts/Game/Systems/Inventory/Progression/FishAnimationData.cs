@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 namespace Game.Systems.Inventory.Progression
@@ -42,7 +43,11 @@ namespace Game.Systems.Inventory.Progression
         
         private void Update()
         {
-            if (IsFinished) return;
+            if (currentLocation > positions.Count - 1)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
             
             this.transform.LookAt(positions[currentLocation]);
 
@@ -60,7 +65,7 @@ namespace Game.Systems.Inventory.Progression
                 currentLocation++;
             }
             
-            if (currentLocation > positions.Count - 1)
+            if (currentLocation > positions.Count - 2)
             {
                 IsFinished = true;
             }

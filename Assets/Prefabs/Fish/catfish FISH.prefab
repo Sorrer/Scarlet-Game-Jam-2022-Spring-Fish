@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 1736570088452302483}
   - component: {fileID: 6556614410045172444}
   m_Layer: 0
-  m_Name: catfish
+  m_Name: catfish FISH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,9 +94,9 @@ MonoBehaviour:
   - {x: 15.937, y: 6.691, z: 2.158}
   - {x: 13.872, y: 5.214, z: 3.343}
   IsFinished: 0
-  StoppingRadius: 0.25
+  StoppingRadius: 0.5
   FishWave: 0
-  Speed: 1.5
+  Speed: 3.24
   Velocity: {x: 0, y: 0, z: 0}
   MaxSpeed: 6.88
   Dampening: 0.78

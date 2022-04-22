@@ -17,7 +17,7 @@ MonoBehaviour:
   Category: 2
   Name: String
   Tooltip: Hmm, what is this for?
-  prefabScale: {x: 0.1, y: 0.1, z: 0.1}
+  prefabScale: {x: 0.2, y: 0.2, z: 0.2}
   prefabRotation: {x: 0, y: 0, z: 0}
   buildingSettings:
     forestSettings: []

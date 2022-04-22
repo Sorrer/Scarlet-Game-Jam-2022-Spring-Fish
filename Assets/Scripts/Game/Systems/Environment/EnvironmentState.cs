@@ -11,9 +11,9 @@ namespace Game.Systems.Environment
 
         public void Activate(int index)
         {
-            if (groups.Count >= index || index < 0)
+            if (groups.Count <= index || index < 0)
             {
-                Debug.LogError("Tried to activate out of bounds, doing nothing");
+                Debug.LogError("Tried to activate out of bounds, doing nothing " + index + " > " + groups.Count);
                 return;
             }
 

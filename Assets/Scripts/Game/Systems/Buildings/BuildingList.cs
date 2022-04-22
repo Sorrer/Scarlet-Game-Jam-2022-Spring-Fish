@@ -11,7 +11,8 @@ namespace Game.Systems.Buildings
         [Serializable]
         public struct BuildingListPrefabPair
         {
-            public InventoryItem buildingRelation;
+
+        [HideInInspector] public InventoryItem buildingRelation;
             public BuildInteractable interactable;
         }
 
